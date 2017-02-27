@@ -27,3 +27,5 @@
 (depends-on "use-package")
 (depends-on "web-mode")
 (depends-on "yasnippet")
+
+(depends-on "neotree")
