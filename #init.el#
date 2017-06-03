@@ -4,6 +4,7 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
+
 (require 'cask "~/.emacs.d/.cask/25.1/elpa/cask-20161024.1205/cask.el")
 (cask-initialize)
 
@@ -19,19 +20,17 @@
 (setq company-minimum-prefix-length 2) ; デフォルトは4
 (setq company-selection-wrap-around t) ; 候補の一番下でさらに下に行こうとすると一番上に戻る
 
-
 (add-to-list 'custom-theme-load-path "~/.emacs.d/atom-one-dark-theme/")
-
 (global-set-key [f8] 'neotree-toggle)
 
-
 ;; theme
-;;(load-theme 'atom-one-dark t)
+(load-theme 'atom-one-dark t)
+;;(load-theme 'manoj-dark t)
+
 
 ;;; 現在行に色をつける
 (setq hl-line-face 'underline) ; 下線
 (global-hl-line-mode)
-
 
 ;;(custom-set-faceshl-line ((t (:bakground "color-236"))))
 
@@ -57,7 +56,7 @@
 (setq-default tab-width 4 indent-tabs-mode nil)
 
 ;; 改行コードを表示する
-(setq eol-mnemonic-do "(CRLF)")
+(setq eol-mnemonic-dos "(CRLF)")
 (setq eol-mnemonic-mac "(CR)")
 (setq eol-mnemonic-unix "(LF)")
 
@@ -73,6 +72,9 @@
 
 ;; ツールバーを消す
 (tool-bar-mode -1)
+
+;;スクロールバーを消す
+;;(scroll-bar-mode 0)
 
 ;; 列数を表示する
 (column-number-mode t)
@@ -123,15 +125,15 @@
 (setq ring-bell-function 'my-bell-function)
 
 ;;Ricityフォント
-(set-frame-font "ricty-13")
+(set-frame-font "ricty-12")
 
 ;;; モードラインに時刻を表示する
 (display-time)
 
 ;; 起動時のウィンドウサイズ、色などを設定
-(if (boundp 'window-system)
-    (setq default-frame-alist
-          (append (list
+;;(if (boundp 'window-system)
+;;    (setq default-frame-alist
+;;          (append (list
 ;;                   '(foreground-color . "black")  ; 文字色
 ;;                 '(background-color . "white")  ; 背景色
 ;;               '(border-color     . "black")  ; ボーダー色
@@ -142,9 +144,9 @@
 ;;                   '(left . 200) ; ウィンドウの表示位置（X座標）
 ;;                   '(width . 120) ; ウィンドウの幅（文字数）
 ;;                   '(height . 53) ; ウィンドウの高さ（文字数）
-                   )
-                  default-frame-alist)))
-(setq initial-frame-alist default-frame-alist )
+;;                   )
+;;                  default-frame-alist)))
+;;(setq initial-frame-alist default-frame-alist )
 
 ;; スクリーンの最大化
 (set-frame-parameter nil 'fullscreen 'maximized)
@@ -154,3 +156,17 @@
 
 (autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (yasnippet web-mode use-package smex smartparens projectile prodigy popwin pallet package-utils nyan-mode neotree multiple-cursors magit idle-highlight-mode htmlize flycheck-cask expand-region exec-path-from-shell drag-stuff company atom-one-dark-theme))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
