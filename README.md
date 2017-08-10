@@ -1,6 +1,6 @@
 # .emacs.d
 
-僕のemacsの設定です。
+僕のemacsの設定です。基本的な設定は(この記事)[http://qiita.com/bussorenre/items/bbe757ef87e16c3d31ff]を参考にさせていただきました。
 
 ### macにemacsをインストール
 
