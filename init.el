@@ -1,3 +1,17 @@
+(package-initialize)
+
+;; Macの場合
+(require 'cask)
+;; Linuxの場合
+;; (require 'cask "~/.cask/cask.el")
+
+(cask-initialize)
+
+
+;; ファイルツリーのキーバインド
+(global-set-key [f8] 'neotree-toggle)
+
+
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)

@@ -2,7 +2,7 @@
 
 僕のemacsの設定です。
 
-### macへemacsをインストール
+### macにemacsをインストール
 
 Homebrewを使ってインストールします。
 ```
@@ -22,3 +22,11 @@ For more information about these matters, see the file named COPYING.
 ```
 
 と出たら完了です。
+
+パッケージ管理にはcaskを使っています
+```
+$ brew install cask
+$ cd ~/.emacs.d
+$ cask
+```
+でインストールしてください
