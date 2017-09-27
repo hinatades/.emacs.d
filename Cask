@@ -27,3 +27,6 @@
 (depends-on "yasnippet")
 
 (depends-on "neotree")
+
+(depends-on "powerline")
+(depends-on "atom-one-dark-theme")
