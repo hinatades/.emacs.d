@@ -31,6 +31,11 @@ $ cask
 ```
 でインストールしてください
 
+
+### ToDO
+
+- ターミナルで開いたときは背景を黒く
+
 ### 参考資料
 
 [突然だがEmacs を始めよう](https://qiita.com/bussorenre/items/bbe757ef87e16c3d31ff)
