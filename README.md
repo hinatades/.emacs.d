@@ -32,9 +32,9 @@ $ cask
 でインストールしてください
 
 
-### ToDO
+### カラーテーマ
 
-- ターミナルで開いたときは背景を黒く
+- https://github.com/emacs-jp/replace-colorthemes
 
 ### 参考資料
 

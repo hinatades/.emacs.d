@@ -11,9 +11,11 @@
 (global-set-key [f8] 'neotree-toggle)
 
 ;; テーマを設定する
-(load-theme 'atom-one-dark t)
-(set-face-background 'default "#282c34")
+;;(load-theme 'arjen-theme t)
+;;(set-face-background 'default "#282c34")
 
+(load-theme 'arjen t t)
+(enable-theme 'arjen)
 
 
 (require 'package)
@@ -64,16 +66,15 @@
 ;; 行番号を常に表示させる
 (global-linum-mode)
 (setq linum-format "%4d ")
-(set-face-attribute 'linum nil
-	    :background "#282c34"
-            :height 0.9)
-
+;;(set-face-attribute 'linum nil
+;;	    :background "#282c34"
+;;            :height 0.9)
 
 
 ;; 現在行を目立たせる
 (global-hl-line-mode t)
 (custom-set-faces
-'(hl-line ((t (:background "color-18"))))
+'(hl-line ((t (:background "color-233"))))
 )
 
 ;;
@@ -192,5 +193,4 @@
                  (twittering-goto-next-uri)
                  (execute-kbd-macro (kbd "C-m"))
                  ))))
-
 
