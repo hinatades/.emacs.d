@@ -32,12 +32,28 @@ $ cask
 でインストールしてください
 
 
+### twittering-mode
+
+twittering-modeを導入するため、
+
+```
+brew install gpg imagemagick
+```
+でgpgとimagemagickを導入した後、
+
+```
+git clone https://github.com/hayamiz/twittering-mode.git
+```
+をしてください。
+
+
 ### カラーテーマ
 
 - https://github.com/emacs-jp/replace-colorthemes
 
 ### 参考資料
 
-[突然だがEmacs を始めよう](https://qiita.com/bussorenre/items/bbe757ef87e16c3d31ff)
-[Emacsでもしゃれた画面でプログラミングがしたい！！](https://qiita.com/itome0403/items/05dc50f6bfbdfb04c0cf)
-[Mac 標準terminal、iterm2のEmacsでpowerlineが文字化けするのを修正する](https://joppot.info/2017/04/17/3824)
+- [突然だがEmacs を始めよう](https://qiita.com/bussorenre/items/bbe757ef87e16c3d31ff)
+- [Emacsでもしゃれた画面でプログラミングがしたい！！](https://qiita.com/itome0403/items/05dc50f6bfbdfb04c0cf)
+- [Mac 標準terminal、iterm2のEmacsでpowerlineが文字化けするのを修正する](https://joppot.info/2017/04/17/3824)
+- [EmacsでTwitter: twittering-modeの設定メモった。](http://fukuyama.co/twittering-mode)
