@@ -1,6 +1,6 @@
 # .emacs.d
 
-僕のemacsの設定です。基本的な設定は(この記事)[http://qiita.com/bussorenre/items/bbe757ef87e16c3d31ff]を参考にさせていただきました。
+僕のemacsの設定です。基本的な設定は[この記事](http://qiita.com/bussorenre/items/bbe757ef87e16c3d31ff)を参考にさせていただきました。
 
 ### macにemacsをインストール
 
@@ -30,3 +30,14 @@ $ cd ~/.emacs.d
 $ cask
 ```
 でインストールしてください
+
+
+### カラーテーマ
+
+- https://github.com/emacs-jp/replace-colorthemes
+
+### 参考資料
+
+[突然だがEmacs を始めよう](https://qiita.com/bussorenre/items/bbe757ef87e16c3d31ff)
+[Emacsでもしゃれた画面でプログラミングがしたい！！](https://qiita.com/itome0403/items/05dc50f6bfbdfb04c0cf)
+[Mac 標準terminal、iterm2のEmacsでpowerlineが文字化けするのを修正する](https://joppot.info/2017/04/17/3824)
