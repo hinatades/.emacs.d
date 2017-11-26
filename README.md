@@ -58,3 +58,4 @@ git clone https://github.com/hayamiz/twittering-mode.git
 - [EmacsでTwitter: twittering-modeの設定メモった。](http://fukuyama.co/twittering-mode)
 - [Emacs で Rails の開発効率を上げる Projectile Rails まとめ](https://qiita.com/elbowroomer/items/8e3c4b075a181f224591)
 - [Emacsでmarkdown-modeを使用する](http://moonstruckdrops.github.io/blog/2013/03/24/markdown-mode/)
+- [Macでプログラミング用のフォントRictyを設置した話](https://qiita.com/park-jh/items/3c5b9b4aa5619a3631b3)

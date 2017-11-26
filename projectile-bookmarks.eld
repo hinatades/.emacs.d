@@ -1,1 +1,1 @@
-("~/.emacs.d/" "~/nikkei/do_nkp/")
+("~/nikkei/nkdpro/" "~/nikkei/do_nkp/" "~/.emacs.d/")
