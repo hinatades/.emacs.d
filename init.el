@@ -1,3 +1,4 @@
+
 (package-initialize)
 
 ;; Macの場合
@@ -202,6 +203,7 @@
 
 
 ;; web-mode
+;; .erb の色付け
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
