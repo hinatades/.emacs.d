@@ -1,0 +1,1 @@
+("~/.emacs.d/" "~/nikkei/do_nkp/")
