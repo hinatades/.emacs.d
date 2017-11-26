@@ -22,24 +22,24 @@ For more information about these matters, see the file named COPYING.
 ```
 
 と出たら完了です。
+次にemacsのパッケージをインストールします。パッケージ管理にはcaskを使っています。
+パッケージを実行するコマンドをインストール
+```
+$ brew install gpg imagemagick markdown
+```
+したあと、
 
-パッケージ管理にはcaskを使っています
 ```
 $ brew install cask
 $ cd ~/.emacs.d
 $ cask
 ```
-でインストールしてください
+で完了です。
 
 
 ### twittering-mode
 
 twittering-modeを導入するため、
-
-```
-brew install gpg imagemagick
-```
-でgpgとimagemagickを導入した後、
 
 ```
 git clone https://github.com/hayamiz/twittering-mode.git
@@ -49,6 +49,7 @@ git clone https://github.com/hayamiz/twittering-mode.git
 ### カラーテーマ
 
 - https://github.com/emacs-jp/replace-colorthemes
+
 
 ### 参考資料
 

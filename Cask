@@ -30,3 +30,5 @@
 
 (depends-on "powerline")
 (depends-on "atom-one-dark-theme")
+(depends-on "markdown-mode")
+(depends-on "projectile-rails")
