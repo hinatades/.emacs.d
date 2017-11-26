@@ -57,3 +57,4 @@ git clone https://github.com/hayamiz/twittering-mode.git
 - [Emacsでもしゃれた画面でプログラミングがしたい！！](https://qiita.com/itome0403/items/05dc50f6bfbdfb04c0cf)
 - [Mac 標準terminal、iterm2のEmacsでpowerlineが文字化けするのを修正する](https://joppot.info/2017/04/17/3824)
 - [EmacsでTwitter: twittering-modeの設定メモった。](http://fukuyama.co/twittering-mode)
+- [Emacs で Rails の開発効率を上げる Projectile Rails まとめ](https://qiita.com/elbowroomer/items/8e3c4b075a181f224591)
