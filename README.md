@@ -21,7 +21,11 @@ under the terms of the GNU General Public License.
 For more information about these matters, see the file named COPYING.
 ```
 
-と出たら完了です。
+と出たら完了です。インストール先は
+```
+/usr/local/Cellar/emacs/25.3/share/emacs/
+```
+になります。
 次にemacsのパッケージをインストールします。パッケージ管理にはcaskを使っています。
 パッケージを実行するコマンドをインストール
 ```
