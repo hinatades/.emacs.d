@@ -1,3 +1,25 @@
+;; Emacs 23より前のバージョンを利用しいる方は
+;; user-emacs-directory変数が未設定のため実の設定を追加
+
+(when (< emacs-major-version 23)
+  (defvar user-emacs-directory "~/.emacsd/"))
+
+;; load-pathを追加する関数を定義
+(defun add-to-load-path (&rest pahts)
+(let (path)
+  (dolist (path paths paths)
+    (let ((default-directory
+	   (expand-file-name (concat user-emacs-directory path))))
+    (add-to-list 'load-path default-directory)
+    (if (fboundp 'normal-top-level-add-to-load-path)
+	(nomarl-top-level-add-subdirs-to-load-path))))))
+
+;; ターミナル以外はツールバー、スクロールバーを非表示
+(when window-system
+  ;; tool-barを非表示
+  (tool-bar-mode 0)
+  ;; scroll-bar を非表示
+  (scroll-bar-mode 0 ))
 
 (package-initialize)
 
