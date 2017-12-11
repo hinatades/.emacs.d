@@ -21,6 +21,23 @@
   ;; scroll-bar を非表示
   (scroll-bar-mode 0 ))
 
+
+;; C-mにnew-line-and-indentを割り当てる
+(global-set-key (key "C-m") 'newline-and-indent)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 (package-initialize)
 
 ;; Macの場合
