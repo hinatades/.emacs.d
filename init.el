@@ -1,4 +1,4 @@
-;; Emacs 23より前のバージョンを利用しいる方は
+;; Emacs 23より前のバージョンを利用している方は
 ;; user-emacs-directory変数が未設定のため実の設定を追加
 
 (when (< emacs-major-version 23)
@@ -14,6 +14,22 @@
     (if (fboundp 'normal-top-level-add-to-load-path)
 	(nomarl-top-level-add-subdirs-to-load-path))))))
 
+
+(require 'package) ; package.elを有効可
+;; パッケージリポジトリにMarmaladeとMELPAを追加
+(add-to-list
+ 'package-archives
+ '("marmalade" . "https://marmalade-repo.org/packages/"))
+(add-to-list
+ 'package-archives
+ '("melpa" . "https://melpa.org/packages/"))
+(package-initialize) ; インストール済みのElispを読み込む
+
+
+;; Helm
+(require 'helm-config)
+
+
 ;; ターミナル以外はツールバー、スクロールバーを非表示
 (when window-system
   ;; tool-barを非表示
@@ -23,22 +39,36 @@
 
 
 ;; C-mにnew-line-and-indentを割り当てる
-(global-set-key (key "C-m") 'newline-and-indent)
+(global-set-key (kbd "C-m") 'newline-and-indent)
+
+;; C-hを<DEL>(バックスペース)に置き換える
+(define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
+
+;; 折り返しトグルコマンド
+(define-key global-map (kbd "C-c l") 'toggle-truncate-lines)
+
+;;C-tでウィンドウを切り替える。初期値はtranspose-chars
+(define-key global-map (kbd "C-t") 'other-window)
+
+
+;; ファイルサイズを表示
+(size-indication-mode t)
+;; 時計を表示
+;; (setq display-time-day-and-date t) ; 曜日・月・日を表示
+;; (setq display-time-24hr-format t) ; 24時表示
+;; (display-time-mode t)
+;; バッテリー残量を表示
+;; (display-battery-mode t)
+
+
+;; 5.5 インデントの設定
+;; TABの表示幅。初期値は8
+(setq-default tab-winth 4)
+;; インデントにタブ文字を使用しない
+(setq-default indent-tabs-mode nil)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-(package-initialize)
 
 ;; Macの場合
 (require 'cask)
@@ -58,15 +88,6 @@
 (enable-theme 'arjen)
 
 
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(package-initialize)
-
-;;C-hをbackspaceに
-(keyboard-translate ?\C-h ?\C-?)
-
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -74,7 +95,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (markdown-mode projectile-rails undo-tree auto-complete))))
+    (helm-descbinds helm markdown-mode projectile-rails undo-tree auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -130,27 +151,7 @@
 ;; auto-complete-mode を起動時に有効にする
 (global-auto-complete-mode t)
 
-;; 
 ;; undo-tree
-;;
-;; undo-tree を読み込む
-
-
-;; M-/ をredo に設定する。
-(global-set-key (kbd "M-/") 'undo-tree-redo)
-
-
-;;
-(when (eq system-type 'darwin)
-  (setq ns-command-modifier (quote meta)))
-
-(setq ns-command-modifier (quote meta))
-(setq ns-alternate-modifier (quote super))
-(define-key global-map [?\s-¥] [?\\])
-(define-key key-translation-map [?\s-¥] [?¥])
-(define-key key-translation-map [?¥] [?\s-¥])
-
-
 
 ;; powerlineを設定する
 (require 'powerline)
@@ -204,42 +205,12 @@
 
 (powerline-my-theme)
 
-;; twittering-modeの導入
-(add-to-list 'load-path "~/.emacs.d/twittering-mode")
-(add-to-list 'exec-path "/usr/local/bin")
-
-;; twittering-mode読み込み
-(require 'twittering-mode)
-;; 起動時パスワード認証 *要 gpgコマンド
-(setq twittering-use-master-password t)
-;; パスワード暗号ファイル保存先変更 (デフォはホームディレクトリ)
-(setq twittering-private-info-file "~/.emacs.d/twittering-mode.gpg")
-;; 表示する書式 区切り線いれたら見やすい
-(setq twittering-status-format "%i @%s %S %p: n %T  [%@]%r %R %f%Ln -------------------------------------------")
-;; アイコンを表示する
-(setq twittering-icon-mode t)
-;; アイコンサイズを変更する *48以外を希望する場合 要 imagemagickコマンド
-(setq twittering-convert-fix-size 40)
-;; 更新の頻度（秒）
-(setq twittering-timer-interval 40)
-;; ツイート取得数
-(setq twittering-number-of-tweets-on-retrieval 50)
-;; o で次のURLをブラウザでオープン
-(add-hook 'twittering-mode-hook
-          (lambda ()
-            (local-set-key (kbd "o")
-               (lambda ()
-                 (interactive)
-                 (twittering-goto-next-uri)
-                 (execute-kbd-macro (kbd "C-m"))
-                 ))))
 
 ;; Ruby on Rails
 (require 'projectile)
 (projectile-global-mode)
 (require 'projectile-rails)
 (add-hook 'projectile-mode-hook 'projectile-rails-on)
-
 
 ;; web-mode
 ;; .erb の色付け
