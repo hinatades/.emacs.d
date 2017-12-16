@@ -27,6 +27,11 @@ For more information about these matters, see the file named COPYING.
 ```
 になります。
 次にemacsのパッケージをインストールします。パッケージ管理にはcaskを使っています。
+パッケージをリフレッシュした後
+```
+M-x package-refresh-contents
+```
+
 パッケージを実行するコマンドをインストール
 ```
 $ brew install gpg imagemagick markdown

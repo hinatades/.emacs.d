@@ -1,2 +1,25 @@
 ls
 ls
+ls
+cal
+ls
+sl
+pwd
+ls
+cd
+cd .emacs.d/
+ls
+git diff
+ls
+ls
+ls
+cal
+ls
+ls
+ls
+\
+cd
+cd nikkei/do_nkp/
+ls
+e README.md 
+emacs README.md 
