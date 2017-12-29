@@ -32,3 +32,8 @@
 (depends-on "atom-one-dark-theme")
 (depends-on "markdown-mode")
 (depends-on "projectile-rails")
+
+
+(depends-on "helm")
+(depends-on "helm-descbinds")
+(depends-on "undo-tree")

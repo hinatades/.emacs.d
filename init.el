@@ -16,6 +16,24 @@
 
 
 (require 'package) ; package.elを有効可
+
+
+
+;; errorが直らない。。。
+;; Wrong type argument: consp, nil 
+
+;; Elscreenのプレフィックスキーを変更する (初期値はC-z)
+;;(setq elscreen-prefix-key (kbd "C-t"))
+;;(when (require 'elscreen nil t)
+  ;;(elscreen-start)
+  ;; C-z C-z をタイプした時にデフォルトのC-zを利用する
+  ;;(if window-system
+    ;;  (define-key elscreen-map (kbd "C-z") 'iconify-or-deiconify-frame)
+    ;;(define-key elscreen-map (kbd "C-z") 'suspend-emacs)))
+
+
+
+
 ;; パッケージリポジトリにMarmaladeとMELPAを追加
 (add-to-list
  'package-archives
@@ -28,7 +46,8 @@
 
 ;; Helm
 (require 'helm-config)
-
+;; helm-for-fileにキーバインド
+(define-key global-map (kbd "C-x f") 'helm-for-files)
 
 ;; ターミナル以外はツールバー、スクロールバーを非表示
 (when window-system
@@ -58,7 +77,7 @@
 ;; (setq display-time-24hr-format t) ; 24時表示
 ;; (display-time-mode t)
 ;; バッテリー残量を表示
-;; (display-battery-mode t)
+(display-battery-mode t)
 
 
 ;; 5.5 インデントの設定
@@ -93,7 +112,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (typescript-mode helm-descbinds helm markdown-mode projectile-rails undo-tree auto-complete))))
+    (package-utils elscreen helm-c-moccur typescript-mode helm-descbinds helm markdown-mode projectile-rails undo-tree auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -103,6 +122,12 @@
 
 ;;
 ;; Auto Complete
+
+(when (require 'auto-complete-config nil t)
+  (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
+  (ac-config-default)
+  (setq ac-use-menu-map t)
+  (setq ac-ignore-case nil))
 
 (set-language-environment 'Japanese)    ; 日本語環境
 (set-default-coding-systems 'utf-8-unix)    ; UTF-8 が基本
@@ -120,6 +145,8 @@
 
 ;; 対応するカッコを強調表示
 (show-paren-mode t)
+
+
 
 ;; 時間も表示させる。
 (display-time)
@@ -242,3 +269,17 @@
 
 ;; カッコを自動で閉じる
 (electric-pair-mode 1)
+
+;; バックアップとオートセーブファイルを~/.emacs.d/backups/へ集める
+(add-to-list 'backup-directory-alist
+             (cons "." "~/.emacs.d/backups/"))
+(setq auto-save-file-name-transforms
+      `((".*" ,(expand-file-name "~/.emacsd/backups/") )))
+
+;; undo-treeの設定
+(when (require 'undo-tree nil t)
+  ;;C-'にredoを割り当てる)
+  ;; (define-key global-map (kbd "C-'") 'undo-tree-redo)
+  (global-undo-tree-mode))
+
+
