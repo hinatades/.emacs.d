@@ -34,6 +34,7 @@
 (depends-on "projectile-rails")
 
 
+(depends-on "typescript-mode")
 (depends-on "helm")
 (depends-on "helm-descbinds")
 (depends-on "undo-tree")
