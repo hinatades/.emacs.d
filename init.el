@@ -17,8 +17,6 @@
 
 (require 'package) ; package.elを有効可
 
-
-
 ;; errorが直らない。。。
 ;; Wrong type argument: consp, nil 
 
@@ -104,7 +102,6 @@
 (load-theme 'arjen t t)
 (enable-theme 'arjen)
 
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -147,7 +144,6 @@
 (show-paren-mode t)
 
 
-
 ;; 時間も表示させる。
 (display-time)
 
@@ -176,7 +172,6 @@
 ;; auto-complete-mode を起動時に有効にする
 (global-auto-complete-mode t)
 
-;; undo-tree
 
 ;; powerlineを設定する
 (require 'powerline)
@@ -281,5 +276,4 @@
   ;;C-'にredoを割り当てる)
   ;; (define-key global-map (kbd "C-'") 'undo-tree-redo)
   (global-undo-tree-mode))
-
 
