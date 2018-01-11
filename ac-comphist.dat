@@ -1,96 +1,98 @@
-((("extends" .
-   [0 0 0 0 1 0 0])
-  ("ChartComponent" .
-   [0 0 0 0 0 0 1 0 0 0 0 0 0 0])
-  ("Chart" .
-   [0 0 0 1 0])
-  ("var" .
-   [0 0 1])
-  ("package-initialize" .
-   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
-  ("package-archives" .
-   [0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0])
-  ("package-activate" .
-   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
-  ("package" .
-   [0 0 1 3 0 0 0])
-  ("require" .
-   [0 0 0 0 1 0 0])
-  ("nil" .
-   [1 0 0])
-  ("indent-tabs-mode" .
-   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
-  ("display-battery-mode" .
-   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
-  ("display-time-mode" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
-  ("display-time-24hr-format" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
-  ("HOME/.rbenv/bin:" .
-   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
-  ("limit" .
-   [2 0 0 0 1])
-  ("keymap" .
-   [0 0 1 0 0 0])
-  ("let" .
-   [2 0 0])
-  ("dolist" .
-   [1 0 0 0 0 0])
-  ("path" .
-   [2 0 0 0])
-  ("paths" .
-   [1 0 0 0 0])
-  ("default-directory" .
-   [0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0])
-  ("expand-file-name" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("concat" .
-   [1 0 0 0 0 0])
-  ("user-emacs-directory" .
-   [0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0])
-  ("add-to-list" .
-   [0 0 0 0 0 0 3 0 0 0 0])
-  ("load-path" .
-   [0 0 0 0 0 1 0 0 0])
-  ("default" .
-   [0 0 0 0 1 0 0])
-  ("if" .
-   [1 0])
-  ("fboundp" .
-   [0 0 0 0 0 1 0])
-  ("normal-top-level" .
-   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
-  ("normal-top-level-add-to-load-path" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("when" .
-   [1 0 0 1])
-  ("emacs-major-version" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
-  ("defvar" .
-   [0 0 0 0 1 0])
-  ("window" .
-   [0 0 0 0 1 0])
-  ("window-system" .
-   [0 0 0 0 0 0 0 0 0 0 1 0 0])
-  ("tool-bar-mode" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("scroll-bar" .
-   [1 0 0 0 0 0 0 0 0 0])
-  ("global-set-key" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("newline" .
-   [0 0 0 1 1 0 0])
-  ("newline-and-indent" .
-   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0])
-  ("setq-default" .
-   [0 0 0 0 0 0 0 1 0 0 1 0])
-  ("setq" .
-   [3 0 0 0])
-  ("size-indication-mode" .
-   [0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("display" .
-   [0 0 0 0 1 1 0])
+((("rjsx-mode" .
+   [0 0 0 1 1 0 0 0 0])
+  ("display-time-day-and-date" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
   ("display-time" .
    [0 0 0 0 0 0 1 0 2 0 0 0])
-  ("display-time-day-and-date" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])))
+  ("display" .
+   [0 0 0 0 1 1 0])
+  ("size-indication-mode" .
+   [0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("setq" .
+   [3 0 0 0])
+  ("setq-default" .
+   [0 0 0 0 0 0 0 1 0 0 1 0])
+  ("newline-and-indent" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("newline" .
+   [0 0 0 1 1 0 0])
+  ("global-set-key" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("scroll-bar" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("tool-bar-mode" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("window-system" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("window" .
+   [0 0 0 0 1 0])
+  ("defvar" .
+   [0 0 0 0 1 0])
+  ("emacs-major-version" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("when" .
+   [1 0 0 1])
+  ("normal-top-level-add-to-load-path" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("normal-top-level" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("fboundp" .
+   [0 0 0 0 0 1 0])
+  ("if" .
+   [1 0])
+  ("default" .
+   [0 0 0 0 1 0 0])
+  ("load-path" .
+   [0 0 0 0 0 1 0 0 0])
+  ("add-to-list" .
+   [0 0 0 0 0 0 3 0 0 0 0])
+  ("user-emacs-directory" .
+   [0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0])
+  ("concat" .
+   [1 0 0 0 0 0])
+  ("expand-file-name" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("default-directory" .
+   [0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0])
+  ("paths" .
+   [1 0 0 0 0])
+  ("path" .
+   [2 0 0 0])
+  ("dolist" .
+   [1 0 0 0 0 0])
+  ("let" .
+   [2 0 0])
+  ("keymap" .
+   [0 0 1 0 0 0])
+  ("limit" .
+   [2 0 0 0 1])
+  ("HOME/.rbenv/bin:" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("display-time-24hr-format" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("display-time-mode" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("display-battery-mode" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("indent-tabs-mode" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("nil" .
+   [1 0 0])
+  ("require" .
+   [0 0 0 0 1 0 0])
+  ("package" .
+   [0 0 1 3 0 0 0])
+  ("package-activate" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("package-archives" .
+   [0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0])
+  ("package-initialize" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("var" .
+   [0 0 1])
+  ("Chart" .
+   [0 0 0 1 0])
+  ("ChartComponent" .
+   [0 0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("extends" .
+   [0 0 0 0 1 0 0])))

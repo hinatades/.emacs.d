@@ -1,3 +1,4 @@
+
 ;; Emacs 23より前のバージョンを利用している方は
 ;; user-emacs-directory変数が未設定のため実の設定を追加
 
@@ -29,9 +30,6 @@
     ;;  (define-key elscreen-map (kbd "C-z") 'iconify-or-deiconify-frame)
     ;;(define-key elscreen-map (kbd "C-z") 'suspend-emacs)))
 
-
-
-
 ;; パッケージリポジトリにMarmaladeとMELPAを追加
 (add-to-list
  'package-archives
@@ -53,7 +51,6 @@
   (tool-bar-mode 0)
   ;; scroll-bar を非表示
   (scroll-bar-mode 0 ))
-
 
 ;; C-mにnew-line-and-indentを割り当てる
 (global-set-key (kbd "C-m") 'newline-and-indent)
@@ -245,6 +242,9 @@
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
 
+;; flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
 ;; rjsx-mode
 (require 'rjsx-mode)
 (add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
@@ -266,6 +266,11 @@
 (add-to-list 'ac-modes 'rjsx-mode)
 
 
+;; rjsx-modeでflycheckを有効可
+(require 'flycheck)
+(flycheck-add-mode 'javascript-eslint 'rjsx-mode)
+(add-hook 'rjsx-mode-hook 'flycheck-mode)
+
 ;; markdown-mode
 
 (autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
@@ -286,6 +291,12 @@
 
 ;; カッコを自動で閉じる
 (electric-pair-mode 1)
+
+
+;; バックアップの無効化
+(setq make-backup-files nil)
+(setq auto-save-default nil) 
+
 
 ;; バックアップとオートセーブファイルを~/.emacs.d/backups/へ集める
 (add-to-list 'backup-directory-alist

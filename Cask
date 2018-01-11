@@ -39,3 +39,4 @@
 (depends-on "helm-descbinds")
 (depends-on "undo-tree")
 (depends-on "rjsx-mode")
+(depends-on "flycheck")
