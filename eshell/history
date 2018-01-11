@@ -24,3 +24,53 @@ ls
 e README.md 
 emacs README.md 
 ls
+ls
+exit
+exit
+rails s
+cd ../../..
+cd ..
+rails g controller api/v1/comments --no-assets
+ls
+exit
+cd ..
+cd ..
+cd ..
+cd ..
+ls
+ls
+cal
+ls
+rails s
+cd ..
+rails g model comment author:string text:text
+ls
+git add .
+git commit -m "make model comment"
+git push
+ls
+ls
+rails c
+ls
+ls
+rails c
+rake db:migrate
+rails c
+rails c
+rails s
+mv Chart.js Chart.js.jsx
+ls
+mv utils.js\  utils.js.jsx
+mv utils.js utils.js.jsx
+ls
+mv utils.js\ utils.js.jsx
+ls
+cd ../../..
+../
+rails s
+rails s
+rails s
+exit
+cd ..
+ls
+exit
