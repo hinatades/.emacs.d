@@ -241,7 +241,6 @@
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
-
 ;; flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
@@ -281,7 +280,6 @@
 (require 'typescript-mode)
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 
-
 ;; htmlタグの自動補完をオン
 (setq web-mode-auto-close-style 1)
 (setq web-mode-tag-auto-close-style t)
@@ -292,11 +290,9 @@
 ;; カッコを自動で閉じる
 (electric-pair-mode 1)
 
-
 ;; バックアップの無効化
 (setq make-backup-files nil)
 (setq auto-save-default nil) 
-
 
 ;; バックアップとオートセーブファイルを~/.emacs.d/backups/へ集める
 (add-to-list 'backup-directory-alist
@@ -309,4 +305,3 @@
   ;;C-'にredoを割り当てる)
   ;; (define-key global-map (kbd "C-'") 'undo-tree-redo)
   (global-undo-tree-mode))
-
