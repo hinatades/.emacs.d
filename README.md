@@ -32,12 +32,6 @@ For more information about these matters, see the file named COPYING.
 M-x package-refresh-contents
 ```
 
-パッケージを実行するコマンドをインストール
-```
-$ brew install gpg imagemagick markdown
-```
-したあと、
-
 ```
 $ brew install cask
 $ cd ~/.emacs.d
@@ -46,14 +40,26 @@ $ cask
 で完了です。
 
 
-### twittering-mode
+mac以外は
+```
+$  curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
+```
+でcaskコマンドをインストールし
 
-twittering-modeを導入するため、
+.bashrc```
+
+PATH="$HOME/.cask/bin:$PATH"
 
 ```
-git clone https://github.com/hayamiz/twittering-mode.git
+
+パスを通します。
+
 ```
-をしてください。
+$ source ~/.bashrc
+```
+シェルの設定を更新することでcaskコマンドが使えます。
+
+
 
 ### カラーテーマ
 
