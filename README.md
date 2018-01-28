@@ -1,6 +1,6 @@
 # .emacs.d
 
-僕のemacsの設定です。基本的な設定は[この記事](http://qiita.com/bussorenre/items/bbe757ef87e16c3d31ff)を参考にさせていただきました。
+僕のemacsの設定です。基本的な設定はで[こちら](http://qiita.com/bussorenre/items/bbe757ef87e16c3d31ff)を参考にさせていただきました。
 
 ### macにemacsをインストール
 
@@ -26,8 +26,10 @@ For more information about these matters, see the file named COPYING.
 /usr/local/Cellar/emacs/25.3/share/emacs/
 ```
 になります。
-次にemacsのパッケージをインストールします。パッケージ管理にはcaskを使っています。
-パッケージをリフレッシュした後
+
+次にemacsのパッケージをインストールします。パッケージ管理にはcaskを使います。
+以下でパッケージをリフレッシュした後、
+
 ```
 M-x package-refresh-contents
 ```
@@ -37,28 +39,28 @@ $ brew install cask
 $ cd ~/.emacs.d
 $ cask
 ```
-で完了です。
-
+で完了です。caskコマンドでCaskに書かれたパッケージがインストールされます。
 
 mac以外は
+
 ```
 $  curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
 ```
 でcaskコマンドをインストールし
 
-.bashrc```
+```.bashrc
 
 PATH="$HOME/.cask/bin:$PATH"
 
 ```
 
-パスを通します。
+でパスを通します。その後
 
 ```
 $ source ~/.bashrc
 ```
-シェルの設定を更新することでcaskコマンドが使えます。
 
+でシェルの設定を更新することでcaskコマンドが使えます。
 
 
 ### カラーテーマ
