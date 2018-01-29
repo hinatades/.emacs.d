@@ -41,7 +41,12 @@ $ cask
 ```
 で完了です。caskコマンドでCaskに書かれたパッケージがインストールされます。
 
-mac以外は
+### ubuntu
+
+```
+$ git clone https://github.com/hinatades/.emacs.d
+```
+でクローンした後、
 
 ```
 $  curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
@@ -61,12 +66,60 @@ $ source ~/.bashrc
 ```
 
 でシェルの設定を更新することでcaskコマンドが使えます。
+init.elのcaskの読み込み分を
 
+```
+;; (require 'cask)
+(require 'cask "~/.cask/cask.el")
+```
+と書き換え、
+
+```
+$ .emacs.d
+$ cask
+```
+で完了。
 
 ### カラーテーマ
 
 - https://github.com/emacs-jp/replace-colorthemes
 
+
+## emacs のパッケージシステム
+
+emacsのパッケージシステムは
+
+ - package.el
+ - auto-install.el
+ 
+ などがある。auto-install.elは割りと古いパッケージシステムなので導入方法をメモしておく。なお、本リポジトリは導入済みなので以下を行う必要はない。
+ 
+ ```
+ $ cd ~/.emacs.d/elisp
+ $ wget http://www.emacswiki.org/emacs/download/auto-install.el
+ ```
+ 
+ あとはinit.elに
+
+```
+ ;;; auto-installの設定
+(add-to-list 'load-path "~/.emacs.d/elisp/")
+(require 'auto-install)
+;;インストールディレクトリを設定する 初期値は ~/.emacs.d/auto-install/
+(setq auto-install-directory "~/.emacs.d/elisp/")
+ ```
+ とか書いておけばいい。
+ 
+ auto-installを導入することで
+ 
+ ```
+M-x install-elisp URL
+M-x install-elisp-from-emacswiki EmacsWikiのページ名
+M-x install-elisp-from-gist gist-id
+M-x auto-install-batch パッケージ名 
+ ```
+
+なんかが使えるようになる。
 
 ### 参考資料
 
@@ -77,3 +130,4 @@ $ source ~/.bashrc
 - [Emacs で Rails の開発効率を上げる Projectile Rails まとめ](https://qiita.com/elbowroomer/items/8e3c4b075a181f224591)
 - [Emacsでmarkdown-modeを使用する](http://moonstruckdrops.github.io/blog/2013/03/24/markdown-mode/)
 - [Macでプログラミング用のフォントRictyを設置した話](https://qiita.com/park-jh/items/3c5b9b4aa5619a3631b3)
+- [emacsで、全行インデントを一括で行う方法](https://qiita.com/AnchorBlues/items/2e216f730c1e9b84a593)

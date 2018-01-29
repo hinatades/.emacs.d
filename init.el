@@ -7,13 +7,13 @@
 
 ;; load-pathを追加する関数を定義
 (defun add-to-load-path (&rest pahts)
-(let (path)
-  (dolist (path paths paths)
-    (let ((default-directory
-	   (expand-file-name (concat user-emacs-directory path))))
-    (add-to-list 'load-path default-directory)
-    (if (fboundp 'normal-top-level-add-to-load-path)
-	(nomarl-top-level-add-subdirs-to-load-path))))))
+  (let (path)
+    (dolist (path paths paths)
+      (let ((default-directory
+              (expand-file-name (concat user-emacs-directory path))))
+        (add-to-list 'load-path default-directory)
+        (if (fboundp 'normal-top-level-add-to-load-path)
+            (nomarl-top-level-add-subdirs-to-load-path))))))
 
 
 (require 'package) ; package.elを有効可
@@ -24,11 +24,11 @@
 ;; Elscreenのプレフィックスキーを変更する (初期値はC-z)
 ;;(setq elscreen-prefix-key (kbd "C-t"))
 ;;(when (require 'elscreen nil t)
-  ;;(elscreen-start)
-  ;; C-z C-z をタイプした時にデフォルトのC-zを利用する
-  ;;(if window-system
-    ;;  (define-key elscreen-map (kbd "C-z") 'iconify-or-deiconify-frame)
-    ;;(define-key elscreen-map (kbd "C-z") 'suspend-emacs)))
+;;(elscreen-start)
+;; C-z C-z をタイプした時にデフォルトのC-zを利用する
+;;(if window-system
+;;  (define-key elscreen-map (kbd "C-z") 'iconify-or-deiconify-frame)
+;;(define-key elscreen-map (kbd "C-z") 'suspend-emacs)))
 
 ;; パッケージリポジトリにMarmaladeとMELPAを追加
 (add-to-list
@@ -38,6 +38,25 @@
  'package-archives
  '("melpa" . "https://melpa.org/packages/"))
 (package-initialize) ; インストール済みのElispを読み込む
+
+
+;; ------------------------------------------------------------------------
+;; auto-install
+;; http://www.emacswiki.org/emacs/download/auto-install.el
+;; ------------------------------------------------------------------------
+
+
+;;; auto-installの設定
+(add-to-list 'load-path "~/.emacs.d/elisp/")
+(require 'auto-install)
+;;インストールディレクトリを設定する 初期値は ~/.emacs.d/auto-install/
+(setq auto-install-directory "~/.emacs.d/elisp/")
+;; 起動時にEmacsWikiのページ名を補完候補に加える
+;;(auto-install-update-emacswiki-package-name t)
+;; ediff関連のバッファを1つのフレームにまとめる
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+;; install-elisp の関数を利用可能にする
+(auto-install-compatibility-setup)
 
 
 ;; Helm
@@ -106,7 +125,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (rjsx-mode package-utils elscreen helm-c-moccur typescript-mode helm-descbinds helm markdown-mode projectile-rails undo-tree auto-complete))))
+    (## point-undo rjsx-mode package-utils elscreen helm-c-moccur typescript-mode helm-descbinds helm markdown-mode projectile-rails undo-tree auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -163,8 +182,14 @@
 ;; よくわからない
 (ac-config-default)
 
+;; TABの表示幅。初期値は8
+(setq-default tab-width 4)
+
 ;; TABキーで自動補完を有効にする
 (ac-set-trigger-key "TAB")
+
+;; インデントにタブ文字を使用しない
+(setq-default indent-tabs-mode nil)
 
 ;; auto-complete-mode を起動時に有効にする
 (global-auto-complete-mode t)
@@ -257,9 +282,9 @@
 
 ;; rjsx-mode時にauto-completeを有効可
 (add-hook 'rjsx-mode-hook '(lambda ()
-                                   (require 'auto-complete)
-                                   (auto-complete-mode t)
-                                   ))
+                             (require 'auto-complete)
+                             (auto-complete-mode t)
+                             ))
 (require 'auto-complete-config)
 (ac-config-default)
 (add-to-list 'ac-modes 'rjsx-mode)
@@ -305,3 +330,17 @@
   ;;C-'にredoを割り当てる)
   ;; (define-key global-map (kbd "C-'") 'undo-tree-redo)
   (global-undo-tree-mode))
+
+;; point-undo
+(require 'point-undo)
+(define-key global-map [f7] 'point-undo)
+(define-key global-map [S-f7] 'point-redo)
+
+;;　全行一括インデント
+(defun all-indent ()
+  (interactive)
+  (mark-whole-buffer)
+  (indent-region (region-beginning)(region-end))
+  (point-undo))
+
+(global-set-key (kbd  "C-x C-]") 'all-indent) 
