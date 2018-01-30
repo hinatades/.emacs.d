@@ -1,8 +1,21 @@
 # .emacs.d
 
-僕のemacsの設定です。基本的な設定はで[こちら](http://qiita.com/bussorenre/items/bbe757ef87e16c3d31ff)を参考にさせていただきました。
+- [概要](##概要)
+- [インストール](##インストール)
+  - [Mac](###Mac)
+  - [Ubuntu](###Ubuntu)
+- [Tips](##Tips)
+- [その他](##その他)
+- [参考資料](##参考資料)
 
-### macにemacsをインストール
+
+## 概要
+
+僕のemacsの設定です。
+
+## インストール
+
+### Mac
 
 Homebrewを使ってインストールします。
 ```
@@ -41,7 +54,7 @@ $ cask
 ```
 で完了です。caskコマンドでCaskに書かれたパッケージがインストールされます。
 
-### ubuntu
+### Ubuntu
 
 ```
 $ git clone https://github.com/hinatades/.emacs.d
@@ -79,6 +92,22 @@ $ cask
 ```
 
 で完了。
+
+## Tips
+
+### 全行一括インデント
+
+```
+C-x C-]
+```
+
+### プロジェクト内文字列検索
+
+```
+M-x helm-git-grep RET
+```
+
+## その他
 
 ### カラーテーマ
 
@@ -121,22 +150,8 @@ M-x auto-install-batch パッケージ名
 
 なんかが使えるようになる。
 
-## 便利な機能
 
-### 全行一括インデント
-
-```
-C-x C-]
-```
-
-### プロジェクト内文字列検索
-
-```
-M-x helm-git-grep RET
-```
-
-
-### 参考資料
+## 参考資料
 
 - [突然だがEmacs を始めよう](https://qiita.com/bussorenre/items/bbe757ef87e16c3d31ff)
 - [Emacsでもしゃれた画面でプログラミングがしたい！！](https://qiita.com/itome0403/items/05dc50f6bfbdfb04c0cf)
