@@ -125,7 +125,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (## point-undo rjsx-mode package-utils elscreen helm-c-moccur typescript-mode helm-descbinds helm markdown-mode projectile-rails undo-tree auto-complete))))
+    (helm-git-grep ## point-undo rjsx-mode package-utils elscreen helm-c-moccur typescript-mode helm-descbinds helm markdown-mode projectile-rails undo-tree auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -343,4 +343,16 @@
   (indent-region (region-beginning)(region-end))
   (point-undo))
 
-(global-set-key (kbd  "C-x C-]") 'all-indent) 
+(global-set-key (kbd  "C-x C-]") 'all-indent)
+
+
+;; helm-git-grep
+x
+(require 'helm-git-grep) ;; Not necessary if installed by package.el
+(global-set-key (kbd "C-c g") 'helm-git-grep)
+;; Invoke `helm-git-grep' from isearch.
+(define-key isearch-mode-map (kbd "C-c g") 'helm-git-grep-from-isearch)
+;; Invoke `helm-git-grep' from other helm.
+(eval-after-load 'helm
+  '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm))
+
