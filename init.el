@@ -347,7 +347,7 @@
 
 
 ;; helm-git-grep
-x
+
 (require 'helm-git-grep) ;; Not necessary if installed by package.el
 (global-set-key (kbd "C-c g") 'helm-git-grep)
 ;; Invoke `helm-git-grep' from isearch.

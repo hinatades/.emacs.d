@@ -54,9 +54,7 @@ $  curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
 でcaskコマンドをインストールし
 
 ```.bashrc
-
 PATH="$HOME/.cask/bin:$PATH"
-
 ```
 
 でパスを通します。その後
@@ -72,12 +70,14 @@ init.elのcaskの読み込み分を
 ;; (require 'cask)
 (require 'cask "~/.cask/cask.el")
 ```
+
 と書き換え、
 
 ```
 $ .emacs.d
 $ cask
 ```
+
 で完了。
 
 ### カラーテーマ
@@ -89,37 +89,52 @@ $ cask
 
 emacsのパッケージシステムは
 
- - package.el
- - auto-install.el
- 
- などがある。auto-install.elは割りと古いパッケージシステムなので導入方法をメモしておく。なお、本リポジトリは導入済みなので以下を行う必要はない。
- 
- ```
- $ cd ~/.emacs.d/elisp
- $ wget http://www.emacswiki.org/emacs/download/auto-install.el
- ```
- 
- あとはinit.elに
+- package.el
+- auto-install.el
+
+などがある。auto-install.elは割りと古いパッケージシステムなので導入方法をメモしておく。なお、本リポジトリは以下パッケージをすでに導入済みなので以下を行う必要はない。
 
 ```
- ;;; auto-installの設定
+$ cd ~/.emacs.d/elisp
+$ wget http://www.emacswiki.org/emacs/download/auto-install.el
+```
+
+あとはinit.elに
+
+```
+;;; auto-installの設定
 (add-to-list 'load-path "~/.emacs.d/elisp/")
 (require 'auto-install)
 ;;インストールディレクトリを設定する 初期値は ~/.emacs.d/auto-install/
 (setq auto-install-directory "~/.emacs.d/elisp/")
- ```
- とか書いておけばいい。
- 
- auto-installを導入することで
- 
- ```
+```
+とか書いておけばいい。
+
+auto-installを導入することで
+
+```
 M-x install-elisp URL
 M-x install-elisp-from-emacswiki EmacsWikiのページ名
 M-x install-elisp-from-gist gist-id
 M-x auto-install-batch パッケージ名 
- ```
+```
 
 なんかが使えるようになる。
+
+## 便利な機能
+
+### 全行一括インデント
+
+```
+C-x C-]
+```
+
+### プロジェクト内文字列検索
+
+```
+M-x helm-git-grep RET
+```
+
 
 ### 参考資料
 
