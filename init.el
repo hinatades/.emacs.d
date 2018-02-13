@@ -62,7 +62,7 @@
 ;; Helm
 (require 'helm-config)
 ;; helm-for-fileにキーバインド
-(define-key global-map (kbd "C-x f") 'helm-for-files)
+(define-key global-map (kbd "C-x C-f") 'helm-for-files)
 
 ;; ターミナル以外はツールバー、スクロールバーを非表示
 (when window-system
@@ -195,6 +195,7 @@
 (global-auto-complete-mode t)
 
 
+
 ;; powerlineを設定する
 (require 'powerline)
 
@@ -267,7 +268,19 @@
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
 ;; flycheck
+(require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
+
+(eval-after-load 'flycheck
+  '(custom-set-variables
+    '(flycheck-disabled-checkers '(javascript-jshint javascript-jscs))))
+
+(setq js2-include-browser-externs nil)
+(setq js2-mode-show-parse-errors nil)
+(setq js2-mode-show-strict-warnings nil)
+(setq js2-highlight-external-variables nil)
+(setq js2-include-jslint-globals nil)
+
 
 ;; rjsx-mode
 (require 'rjsx-mode)
@@ -278,7 +291,8 @@
           (lambda ()
             (setq indent-tabs-mode nil) ;;インデントはタブではなくスペース
             (setq js-indent-level 2) ;;スペースは２つ、デフォルトは4
-            (setq js2-strict-missing-semi-warning nil))) ;;行末のセミコロンの警告はオフ
+            ;; (setq js2-strict-missing-semi-warning nil) ;;行末のセミコロンの警告はオフ
+            ))
 
 ;; rjsx-mode時にauto-completeを有効可
 (add-hook 'rjsx-mode-hook '(lambda ()
@@ -289,11 +303,10 @@
 (ac-config-default)
 (add-to-list 'ac-modes 'rjsx-mode)
 
-
 ;; rjsx-modeでflycheckを有効可
-(require 'flycheck)
-(flycheck-add-mode 'javascript-eslint 'rjsx-mode)
-(add-hook 'rjsx-mode-hook 'flycheck-mode)
+;;(require 'flycheck)
+;;(flycheck-add-mode 'javascript-eslint 'rjsx-mode)
+;;(add-hook 'rjsx-mode-hook 'flycheck-mode)
 
 ;; markdown-mode
 
@@ -355,4 +368,3 @@
 ;; Invoke `helm-git-grep' from other helm.
 (eval-after-load 'helm
   '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm))
-

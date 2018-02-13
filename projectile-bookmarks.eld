@@ -1,1 +1,1 @@
-("~/.emacs.d/" "~/nikkei/symphony/" "~/projects/dotfiles/.emacs.d/" "~/nikkei/do_nkp/" "~/nikkei/react-rails-tutorial/" "~/nikkei/react-stockcharts/" "~/nikkei/nkdpro/")
+("~/nikkei/symphony/" "~/.emacs.d/" "~/projects/dotfiles/.emacs.d/" "~/nikkei/do_nkp/" "~/nikkei/react-rails-tutorial/" "~/nikkei/react-stockcharts/" "~/nikkei/nkdpro/")
