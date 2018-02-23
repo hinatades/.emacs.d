@@ -13,7 +13,7 @@
 
 僕のemacsの設定です。
 
-## インストール
+## Installation
 
 ### Mac
 
@@ -113,6 +113,11 @@ M-x helm-git-grep RET
 M-;
 ```
 
+## eshell
+
+```
+M-x eshell
+```
 
 ## その他
 

@@ -74,3 +74,12 @@ exit
 cd ..
 ls
 exit
+npm install --save redux
+ls
+npm i -S react-redux
+npm i -S react-dom
+ls
+cat package.json
+ls
+mv index.js index.jsx
+npm run watch
