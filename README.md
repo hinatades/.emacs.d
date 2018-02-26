@@ -1,17 +1,4 @@
-# .emacs.d
-
-- [概要](#概要)
-- [インストール](#インストール)
-  - [Mac](#mac)
-  - [Ubuntu](#ubuntu)
-- [Tips](#tips)
-- [その他](#その他)
-- [参考資料](#参考資料)
-
-
-## 概要
-
-僕のemacsの設定です。
+## My Emacs Setup
 
 ## Installation
 
@@ -58,11 +45,7 @@ $ cask
 
 ```
 $ git clone https://github.com/hinatades/.emacs.d
-```
-でクローンした後、
-
-```
-$  curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
+$ curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
 ```
 でcaskコマンドをインストールし
 
@@ -113,10 +96,10 @@ M-x helm-git-grep RET
 M-;
 ```
 
-## eshell
+### eshell
 
 ```
-M-x eshell
+C-x e
 ```
 
 ## その他

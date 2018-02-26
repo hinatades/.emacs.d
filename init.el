@@ -62,7 +62,10 @@
 ;; Helm
 (require 'helm-config)
 ;; helm-for-fileにキーバインド
-(define-key global-map (kbd "C-x C-f") 'helm-for-files)
+(define-key global-map (kbd "C-x f") 'helm-for-files)
+
+;; eshell
+(define-key global-map (kbd "C-x e") 'eshell)
 
 ;; ターミナル以外はツールバー、スクロールバーを非表示
 (when window-system
