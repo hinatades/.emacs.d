@@ -1,6 +1,3 @@
-ls
-ls
-ls
 cal
 ls
 sl
@@ -119,5 +116,13 @@ ls
 python manage.py createsuperuser
 python manage.py createsuperuser
 exit
+cd ..
+python manage.py runserver
+python manage.py reunserver
 ls
-exit
+cd ..
+python manage.py runserver
+python manage.py runserver
+python manage.py runserver
+python manage.py runserver
+python manage.py runserver
