@@ -40,3 +40,4 @@
 (depends-on "rjsx-mode")
 (depends-on "flycheck")
 (depends-on "helm-git-grep")
+(depends-on "git-gutter")
