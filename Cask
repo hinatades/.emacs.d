@@ -41,3 +41,4 @@
 (depends-on "flycheck")
 (depends-on "helm-git-grep")
 (depends-on "git-gutter")
+(depends-on "multi-term")
