@@ -86,22 +86,42 @@
 (define-key global-map (kbd "C-t") 'other-window)
 
 ;; multi-term
-;;(require 'multi-term)
+
 (setenv "LANG" "ja_JP.UTF-8")
+
+(setq ansi-term-color-vector                                                
+      [term                                                                 
+       term-color-black                                                     
+       term-color-red                                                       
+       term-color-green                                                     
+       term-color-yellow                                                    
+       term-color-blue                                                      
+       term-color-magenta                                                   
+       term-color-cyan                                                      
+       term-color-white                                                     
+       term-color-black                                                     
+       term-color-red                                                       
+       term-color-green                                                     
+       term-color-yellow                                                    
+       term-color-blue                                                      
+       term-color-magenta                                                   
+       term-color-cyan                                                      
+       term-color-white])                              
 
 (add-hook 'term-mode-hook
           '(lambda ()
              (let* ((key-and-func
-                     `(("\C-p"           term-send-previous-line)
-                       ("\C-n"           term-send-next-line)
+                     `(
+                       ("\C-p"           previous-line)
+                       ("\C-n"           forward-line)
                        ("\C-b"           term-send-backward-char)
                        ("\C-f"           term-send-forward-char)
-                       (,(kbd "C-h")     term-send-backspace)
-                       (,(kbd "C-y")     term-paste)
-                       (,(kbd "ESC ESC") term-send-raw)
-                       (,(kbd "C-S-p")   multi-term-prev)
-                       (,(kbd "C-S-n")   multi-term-next)
-                       (,(kbd "C-t")     other-window)
+                       ;;(,(kbd "C-h")     term-send-backspace)
+                       ;; (,(kbd "C-y")     term-paste)
+                       ;; (,(kbd "ESC ESC") term-send-raw)
+                       ;; (,(kbd "C-S-p")   multi-term-prev)
+                       ;; (,(kbd "C-S-n")   multi-term-next)
+                       (,(kbd "C-t")     other-window)                       
                        ;; 利用する場合は
                        ;; helm-shell-historyの記事を参照してください
                        ;; ("\C-r"           helm-shell-history)
