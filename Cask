@@ -1,13 +1,11 @@
 (source gnu)
 (source melpa)
-
 (depends-on "bind-key")
 (depends-on "cask")
 (depends-on "dash")
 (depends-on "drag-stuff")
 (depends-on "exec-path-from-shell")
 (depends-on "expand-region")
-(depends-on "f")
 (depends-on "flycheck")
 (depends-on "flycheck-cask")
 (depends-on "htmlize")
@@ -25,14 +23,11 @@
 (depends-on "use-package")
 (depends-on "web-mode")
 (depends-on "yasnippet")
-
 (depends-on "neotree")
-
 (depends-on "powerline")
 (depends-on "atom-one-dark-theme")
 (depends-on "markdown-mode")
 (depends-on "projectile-rails")
-
 (depends-on "typescript-mode")
 (depends-on "helm")
 (depends-on "helm-descbinds")
@@ -42,3 +37,4 @@
 (depends-on "helm-git-grep")
 (depends-on "git-gutter")
 (depends-on "multi-term")
+(depends-on "smart-newline")

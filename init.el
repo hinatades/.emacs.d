@@ -1,4 +1,3 @@
-
 ;; Emacs 23より前のバージョンを利用している方は
 ;; user-emacs-directory変数が未設定のため実の設定を追加
 
@@ -65,7 +64,7 @@
 (define-key global-map (kbd "C-x f") 'helm-for-files)
 
 ;; eshell
-(define-key global-map (kbd "C-x e") 'eshell)
+(define-key global-map (kbd "C-x e") 'multi-term)
 
 ;; ターミナル以外はツールバー、スクロールバーを非表示
 (when window-system
@@ -86,6 +85,29 @@
 ;;C-tでウィンドウを切り替える。初期値はtranspose-chars
 (define-key global-map (kbd "C-t") 'other-window)
 
+;; multi-term
+;;(require 'multi-term)
+(setenv "LANG" "ja_JP.UTF-8")
+
+(add-hook 'term-mode-hook
+          '(lambda ()
+             (let* ((key-and-func
+                     `(("\C-p"           term-send-previous-line)
+                       ("\C-n"           term-send-next-line)
+                       ("\C-b"           term-send-backward-char)
+                       ("\C-f"           term-send-forward-char)
+                       (,(kbd "C-h")     term-send-backspace)
+                       (,(kbd "C-y")     term-paste)
+                       (,(kbd "ESC ESC") term-send-raw)
+                       (,(kbd "C-S-p")   multi-term-prev)
+                       (,(kbd "C-S-n")   multi-term-next)
+                       (,(kbd "C-t")     other-window)
+                       ;; 利用する場合は
+                       ;; helm-shell-historyの記事を参照してください
+                       ;; ("\C-r"           helm-shell-history)
+                       )))
+               (loop for (keybind function) in key-and-func do
+                     (define-key term-raw-map keybind function)))))
 
 ;; ファイルサイズを表示
 (size-indication-mode t)
@@ -96,13 +118,11 @@
 ;; バッテリー残量を表示
 (display-battery-mode t)
 
-
 ;; 5.5 インデントの設定
 ;; TABの表示幅。初期値は8
 (setq-default tab-winth 4)
 ;; インデントにタブ文字を使用しない
 (setq-default indent-tabs-mode nil)
-
 
 ;; Macの場合
 (require 'cask)
@@ -129,7 +149,7 @@
  '(flycheck-disabled-checkers (quote (javascript-jshint javascript-jscs)))
  '(package-selected-packages
    (quote
-    (git-gutter git-gutter+ helm-git-grep ## point-undo rjsx-mode package-utils elscreen helm-c-moccur typescript-mode helm-descbinds helm markdown-mode projectile-rails undo-tree auto-complete))))
+    (smart-newline git-gutter git-gutter+ helm-git-grep ## point-undo rjsx-mode package-utils elscreen helm-c-moccur typescript-mode helm-descbinds helm markdown-mode projectile-rails undo-tree auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -153,13 +173,11 @@
 (setq default-process-coding-system '(utf-8 . utf-8))
 (prefer-coding-system 'utf-8-unix)
 
-
 ;; ロックファイル / バックアップファイルを作成しない
 
 (setq create-lockfiles nil)
 (setq make-backup-files nil)
 (setq delete-auto-save-files t)
-
 
 ;; 対応するカッコを強調表示
 (show-paren-mode t)
@@ -179,8 +197,6 @@
 ;; 現在行を目立たせる
 (global-hl-line-mode t)
 
-
-;;
 ;; auto-complete-config の設定ファイルを読み込む。
 (require 'auto-complete-config)
 
@@ -198,8 +214,6 @@
 
 ;; auto-complete-mode を起動時に有効にする
 (global-auto-complete-mode t)
-
-
 
 ;; powerlineを設定する
 (require 'powerline)
@@ -221,7 +235,7 @@
                           (lhs (list (powerline-raw " " face1)
                                      (powerline-major-mode face1)
                                      (powerline-raw " " face1)
-                                     (funcall separator-left face1 face2)
+                                     (funcall separator-left face1 face2)                                    
                                      (powerline-buffer-id nil )
                                      (powerline-raw " [ ")
                                      (powerline-raw mode-line-mule-info nil)
@@ -375,7 +389,23 @@
   '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm))
 
 
-
 ;; git-gutter
 (require 'git-gutter)
 (global-git-gutter-mode t)
+
+
+;; smart-newline
+(require 'smart-newline)
+(global-set-key (kbd "C-m") 'smart-newline)
+(add-hook 'ruby-mode-hook 'smart-newline-mode)
+(add-hook 'emacs-lisp-mode-hook 'smart-newline-mode)
+(add-hook 'org-mode-hook 'smart-newline-mode)
+
+(defadvice smart-newline (around C-u activate)
+;;  "C-uを押したら元のC-mの挙動をするようにした。org-modeなどで活用。"
+  (if (not current-prefix-arg)
+      ad-do-it
+    (let (current-prefix-arg)
+      (let (smart-newline-mode)
+        (call-interactively (key-binding (kbd "C-m")))))))
+
