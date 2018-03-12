@@ -14,7 +14,6 @@
         (if (fboundp 'normal-top-level-add-to-load-path)
             (nomarl-top-level-add-subdirs-to-load-path))))))
 
-
 (require 'package) ; package.elを有効可
 
 ;; errorが直らない。。。
@@ -38,18 +37,17 @@
  '("melpa" . "https://melpa.org/packages/"))
 (package-initialize) ; インストール済みのElispを読み込む
 
-
 ;; ------------------------------------------------------------------------
 ;; auto-install
 ;; http://www.emacswiki.org/emacs/download/auto-install.el
 ;; ------------------------------------------------------------------------
-
 
 ;;; auto-installの設定
 (add-to-list 'load-path "~/.emacs.d/elisp/")
 (require 'auto-install)
 ;;インストールディレクトリを設定する 初期値は ~/.emacs.d/auto-install/
 (setq auto-install-directory "~/.emacs.d/elisp/")
+
 ;; 起動時にEmacsWikiのページ名を補完候補に加える
 ;;(auto-install-update-emacswiki-package-name t)
 ;; ediff関連のバッファを1つのフレームにまとめる
@@ -57,14 +55,16 @@
 ;; install-elisp の関数を利用可能にする
 (auto-install-compatibility-setup)
 
-
 ;; Helm
 (require 'helm-config)
 ;; helm-for-fileにキーバインド
-(define-key global-map (kbd "C-x f") 'helm-for-files)
+(define-key global-map (kbd "C-x C-f") 'helm-for-files)
 
-;; eshell
-(define-key global-map (kbd "C-x e") 'multi-term)
+;; helm-for-fileにキーバインド
+(define-key global-map (kbd "C-x C-g") 'helm-for-files)
+
+;; multi-term
+(define-key global-map (kbd "C-x C-m") 'multi-term)
 
 ;; ターミナル以外はツールバー、スクロールバーを非表示
 (when window-system
@@ -89,48 +89,54 @@
 
 (setenv "LANG" "ja_JP.UTF-8")
 
-(setq ansi-term-color-vector                                                
-      [term                                                                 
-       term-color-black                                                     
-       term-color-red                                                       
-       term-color-green                                                     
-       term-color-yellow                                                    
-       term-color-blue                                                      
-       term-color-magenta                                                   
-       term-color-cyan                                                      
-       term-color-white                                                     
-       term-color-black                                                     
-       term-color-red                                                       
-       term-color-green                                                     
-       term-color-yellow                                                    
-       term-color-blue                                                      
-       term-color-magenta                                                   
-       term-color-cyan                                                      
-       term-color-white])                              
+;; (setq ansi-term-color-vector                                                
+;;       [term                                                                 
+;;        term-color-black                                                     
+;;        term-color-red                                                       
+;;        term-color-green                                                     
+;;        term-color-yellow                                                    
+;;        term-color-blue                                                      
+;;        term-color-magenta                                                   
+;;        term-color-cyan                                                      
+;;        term-color-white                                                     
+;;        term-color-black                                                     
+;;        term-color-red                                                       
+;;        term-color-green                                                     
+;;        term-color-yellow                                                    
+;;        term-color-blue                                                      
+;;        term-color-magenta                                                   
+;;        term-color-cyan                                                      
+;;        term-color-white])                              
+
+;; (add-hook 'term-mode-hook
+;;           '(lambda ()
+;;              (let* ((key-and-func
+;;                      `(
+;;                        ("\C-p"           previous-line)
+;;                        ("\C-n"           "\e[1;9B")
+;;                        ("\C-b"           term-send-backward-char)
+;;                        ("\C-f"           term-send-forward-char)
+;;                        (,(kbd "C-h")     term-send-backspace)
+;;                        (,(kbd "C-y")     term-paste)
+;;                        (,(kbd "ESC ESC") term-send-raw)
+;;                        (,(kbd "C-S-p")   multi-term-prev)
+;;                        (,(kbd "C-S-n")   multi-term-next)
+;;                        (,(kbd "C-t")     other-window)                       
+;;                        利用する場合は
+;;                        helm-shell-historyの記事を参照してください
+;;                        ("\C-r"           helm-shell-history)
+;;                        )))
+;;                (loop for (keybind function) in key-and-func do
+;;                      (define-key term-raw-map keybind function)))))
 
 (add-hook 'term-mode-hook
-          '(lambda ()
-             (let* ((key-and-func
-                     `(
-                       ("\C-p"           previous-line)
-                       ("\C-n"           forward-line)
-                       ("\C-b"           term-send-backward-char)
-                       ("\C-f"           term-send-forward-char)
-                       ;;(,(kbd "C-h")     term-send-backspace)
-                       ;; (,(kbd "C-y")     term-paste)
-                       ;; (,(kbd "ESC ESC") term-send-raw)
-                       ;; (,(kbd "C-S-p")   multi-term-prev)
-                       ;; (,(kbd "C-S-n")   multi-term-next)
-                       (,(kbd "C-t")     other-window)                       
-                       ;; 利用する場合は
-                       ;; helm-shell-historyの記事を参照してください
-                       ;; ("\C-r"           helm-shell-history)
-                       )))
-               (loop for (keybind function) in key-and-func do
-                     (define-key term-raw-map keybind function)))))
+  (lambda () 
+    (define-key term-raw-map (kbd "C-t") 'other-window)
+    (define-key term-raw-map (kbd "C-n") 'next-line)))
+
 
 ;; ファイルサイズを表示
-(size-indication-mode t)
+;;(size-indication-mode t)
 ;; 時計を表示
 ;; (setq display-time-day-and-date t) ; 曜日・月・日を表示
 ;; (setq display-time-24hr-format t) ; 24時表示
@@ -161,6 +167,10 @@
 (load-theme 'arjen t t)
 (enable-theme 'arjen)
 
+;; defalt font color
+;; (custom-set-faces
+;;   '(default ((t (:foreground "#cccccc" :slant italic)))))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -169,7 +179,7 @@
  '(flycheck-disabled-checkers (quote (javascript-jshint javascript-jscs)))
  '(package-selected-packages
    (quote
-    (smart-newline git-gutter git-gutter+ helm-git-grep ## point-undo rjsx-mode package-utils elscreen helm-c-moccur typescript-mode helm-descbinds helm markdown-mode projectile-rails undo-tree auto-complete))))
+    (helm-gtags smart-newline git-gutter git-gutter+ helm-git-grep ## point-undo rjsx-mode package-utils elscreen helm-c-moccur typescript-mode helm-descbinds helm markdown-mode projectile-rails undo-tree auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -320,7 +330,6 @@
 (setq js2-highlight-external-variables nil)
 (setq js2-include-jslint-globals nil)
 
-
 ;; rjsx-mode
 (require 'rjsx-mode)
 (add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
@@ -348,7 +357,6 @@
 ;;(add-hook 'rjsx-mode-hook 'flycheck-mode)
 
 ;; markdown-mode
-
 (autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
 (setq auto-mode-alist (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
@@ -394,25 +402,20 @@
   (mark-whole-buffer)
   (indent-region (region-beginning)(region-end))
   (point-undo))
-
 (global-set-key (kbd  "C-x C-]") 'all-indent)
 
-
 ;; helm-git-grep
-
 (require 'helm-git-grep) ;; Not necessary if installed by package.el
-(global-set-key (kbd "C-c g") 'helm-git-grep)
+(global-set-key (kbd "C-x C-g") 'helm-git-grep)
 ;; Invoke `helm-git-grep' from isearch.
-(define-key isearch-mode-map (kbd "C-c g") 'helm-git-grep-from-isearch)
+(define-key isearch-mode-map (kbd "C-x C-g") 'helm-git-grep-from-isearch)
 ;; Invoke `helm-git-grep' from other helm.
 (eval-after-load 'helm
-  '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm))
-
+  '(define-key helm-map (kbd "C-x C-g") 'helm-git-grep-from-helm))
 
 ;; git-gutter
 (require 'git-gutter)
 (global-git-gutter-mode t)
-
 
 ;; smart-newline
 (require 'smart-newline)
