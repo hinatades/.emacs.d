@@ -1,4 +1,4 @@
-## My Emacs Setup
+# My Emacs Setup
 
 ## Installation
 
@@ -102,17 +102,34 @@ C-x C-f
 C-x C-g
 ```
 
+### multi-trem
+
+```
+C-x C-m
+```
+
 ### コメントアウト
 
 ```
 M-;
 ```
 
-### treminal
+### Markdown プレビュー
 
 ```
-C-x C-m
+C-c C-c p
 ```
+
+
+|------------------------|-----------|
+| ウィンドウ切り替え     | C-t       |
+| 一括インデント　　　　 | C-x C-]   |
+| ファイル検索           | C-x C-f   |
+| プロジェクト文字列検索 | C-x C-g   |
+| コメントアウト         | M-;       |
+| Markdown プレビュー    | C-c C-c p |
+| multi-trem             | C-x C-m   |
+
 
 ## その他
 

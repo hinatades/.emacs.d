@@ -17,7 +17,7 @@
 (require 'package) ; package.elを有効可
 
 ;; errorが直らない。。。
-;; Wrong type argument: consp, nil 
+;; Wrong type argument: consp, nil
 
 ;; Elscreenのプレフィックスキーを変更する (初期値はC-z)
 ;;(setq elscreen-prefix-key (kbd "C-t"))
@@ -82,7 +82,7 @@
 (setenv "LANG" "ja_JP.UTF-8")
 
 (add-hook 'term-mode-hook
-  (lambda () 
+  (lambda ()
     (define-key term-raw-map (kbd "C-t") 'other-window)
     (define-key term-raw-map (kbd "C-n") 'term-send-down)
     (define-key term-raw-map (kbd "C-p") 'term-send-up)))
@@ -217,7 +217,7 @@
                           (lhs (list (powerline-raw " " face1)
                                      (powerline-major-mode face1)
                                      (powerline-raw " " face1)
-                                     (funcall separator-left face1 face2)                                    
+                                     (funcall separator-left face1 face2)
                                      (powerline-buffer-id nil )
                                      (powerline-raw " [ ")
                                      (powerline-raw mode-line-mule-info nil)
@@ -230,12 +230,12 @@
                           (rhs (list (powerline-raw "%4l")
                                      (powerline-raw ":")
                                      (powerline-raw "%2c")
-                                     (powerline-raw " | ")                                  
+                                     (powerline-raw " | ")
                                      (powerline-raw "%6p")
                                      (powerline-raw " ")
                                      )))
                      (concat (powerline-render lhs)
-                             (powerline-fill nil (powerline-width rhs)) 
+                             (powerline-fill nil (powerline-width rhs))
                              (powerline-render rhs)))))))
 
 (defun make/set-face (face-name fg-color bg-color weight)
@@ -328,7 +328,7 @@
 
 ;; バックアップの無効化
 (setq make-backup-files nil)
-(setq auto-save-default nil) 
+(setq auto-save-default nil)
 
 ;; バックアップとオートセーブファイルを~/.emacs.d/backups/へ集める
 (add-to-list 'backup-directory-alist
@@ -347,7 +347,7 @@
 (define-key global-map [f7] 'point-undo)
 (define-key global-map [S-f7] 'point-redo)
 
-;;　全行一括インデント
+;; 全行一括インデント
 (defun all-indent ()
   (interactive)
   (mark-whole-buffer)
@@ -368,7 +368,12 @@
 ;; helm-for-fileにキーバインド
 ;;(define-key global-map (kbd "C-x C-f") 'helm-for-files)
 
+;; helm-swoop
+;; ファイル内文字列検索
+(global-set-key (kbd "C-s") 'helm-swoop)
+
 ;; helm-git-grep
+;; プロジェクト内文字列検索
 (require 'helm-git-grep) ;; Not necessary if installed by package.el
 (global-set-key (kbd "C-x C-g") 'helm-git-grep)
 ;; Invoke `helm-git-grep' from isearch.
@@ -376,11 +381,6 @@
 ;; Invoke `helm-git-grep' from other helm.
 (eval-after-load 'helm
   '(define-key helm-map (kbd "C-x C-g") 'helm-git-grep-from-helm))
-
-
-;; helm-swoop
-;; ファイル内文字列検索
-(global-set-key (kbd "C-x C-s") 'helm-swoop)
 
 
 ;; git-gutter
