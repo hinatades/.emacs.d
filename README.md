@@ -87,7 +87,7 @@ $ cask
 | プロジェクト文字列検索 | `C-x C-g`   |
 | コメントアウト         | `M-;`       |
 | Markdown プレビュー    | `C-c C-c p` |
-| multi-trem             | `C-x C-m`   |
+| multi-term             | `C-x C-m`   |
 
 
 
