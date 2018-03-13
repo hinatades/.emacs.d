@@ -38,3 +38,4 @@
 (depends-on "git-gutter")
 (depends-on "multi-term")
 (depends-on "smart-newline")
+(depends-on "helm-swoop")

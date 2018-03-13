@@ -55,14 +55,6 @@
 ;; install-elisp の関数を利用可能にする
 (auto-install-compatibility-setup)
 
-;; Helm
-(require 'helm-config)
-;; helm-for-fileにキーバインド
-(define-key global-map (kbd "C-x C-f") 'helm-for-files)
-
-;; helm-for-fileにキーバインド
-(define-key global-map (kbd "C-x C-g") 'helm-for-files)
-
 ;; multi-term
 (define-key global-map (kbd "C-x C-m") 'multi-term)
 
@@ -89,51 +81,11 @@
 
 (setenv "LANG" "ja_JP.UTF-8")
 
-;; (setq ansi-term-color-vector                                                
-;;       [term                                                                 
-;;        term-color-black                                                     
-;;        term-color-red                                                       
-;;        term-color-green                                                     
-;;        term-color-yellow                                                    
-;;        term-color-blue                                                      
-;;        term-color-magenta                                                   
-;;        term-color-cyan                                                      
-;;        term-color-white                                                     
-;;        term-color-black                                                     
-;;        term-color-red                                                       
-;;        term-color-green                                                     
-;;        term-color-yellow                                                    
-;;        term-color-blue                                                      
-;;        term-color-magenta                                                   
-;;        term-color-cyan                                                      
-;;        term-color-white])                              
-
-;; (add-hook 'term-mode-hook
-;;           '(lambda ()
-;;              (let* ((key-and-func
-;;                      `(
-;;                        ("\C-p"           previous-line)
-;;                        ("\C-n"           "\e[1;9B")
-;;                        ("\C-b"           term-send-backward-char)
-;;                        ("\C-f"           term-send-forward-char)
-;;                        (,(kbd "C-h")     term-send-backspace)
-;;                        (,(kbd "C-y")     term-paste)
-;;                        (,(kbd "ESC ESC") term-send-raw)
-;;                        (,(kbd "C-S-p")   multi-term-prev)
-;;                        (,(kbd "C-S-n")   multi-term-next)
-;;                        (,(kbd "C-t")     other-window)                       
-;;                        利用する場合は
-;;                        helm-shell-historyの記事を参照してください
-;;                        ("\C-r"           helm-shell-history)
-;;                        )))
-;;                (loop for (keybind function) in key-and-func do
-;;                      (define-key term-raw-map keybind function)))))
-
 (add-hook 'term-mode-hook
   (lambda () 
     (define-key term-raw-map (kbd "C-t") 'other-window)
-    (define-key term-raw-map (kbd "C-n") 'next-line)))
-
+    (define-key term-raw-map (kbd "C-n") 'term-send-down)
+    (define-key term-raw-map (kbd "C-p") 'term-send-up)))
 
 ;; ファイルサイズを表示
 ;;(size-indication-mode t)
@@ -179,7 +131,7 @@
  '(flycheck-disabled-checkers (quote (javascript-jshint javascript-jscs)))
  '(package-selected-packages
    (quote
-    (helm-gtags smart-newline git-gutter git-gutter+ helm-git-grep ## point-undo rjsx-mode package-utils elscreen helm-c-moccur typescript-mode helm-descbinds helm markdown-mode projectile-rails undo-tree auto-complete))))
+    (helm-swoop helm-gtags smart-newline git-gutter git-gutter+ helm-git-grep ## point-undo rjsx-mode package-utils elscreen helm-c-moccur typescript-mode helm-descbinds helm markdown-mode projectile-rails undo-tree auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -297,7 +249,6 @@
 
 (powerline-my-theme)
 
-
 ;; Ruby on Rails
 (require 'projectile)
 (projectile-global-mode)
@@ -404,6 +355,19 @@
   (point-undo))
 (global-set-key (kbd  "C-x C-]") 'all-indent)
 
+
+;; Helm
+(require 'helm)
+(require 'helm-config)
+(helm-mode 1)
+
+;; helm-find-fileにキーバインド
+(define-key global-map (kbd "C-x C-f") 'helm-find-files)
+(define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)
+
+;; helm-for-fileにキーバインド
+;;(define-key global-map (kbd "C-x C-f") 'helm-for-files)
+
 ;; helm-git-grep
 (require 'helm-git-grep) ;; Not necessary if installed by package.el
 (global-set-key (kbd "C-x C-g") 'helm-git-grep)
@@ -412,6 +376,12 @@
 ;; Invoke `helm-git-grep' from other helm.
 (eval-after-load 'helm
   '(define-key helm-map (kbd "C-x C-g") 'helm-git-grep-from-helm))
+
+
+;; helm-swoop
+;; ファイル内文字列検索
+(global-set-key (kbd "C-x C-s") 'helm-swoop)
+
 
 ;; git-gutter
 (require 'git-gutter)
@@ -431,4 +401,3 @@
     (let (current-prefix-arg)
       (let (smart-newline-mode)
         (call-interactively (key-binding (kbd "C-m")))))))
-
