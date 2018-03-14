@@ -131,7 +131,7 @@
  '(flycheck-disabled-checkers (quote (javascript-jshint javascript-jscs)))
  '(package-selected-packages
    (quote
-    (helm-swoop helm-gtags smart-newline git-gutter git-gutter+ helm-git-grep ## point-undo rjsx-mode package-utils elscreen helm-c-moccur typescript-mode helm-descbinds helm markdown-mode projectile-rails undo-tree auto-complete))))
+    (swap-buffers helm-swoop helm-gtags smart-newline git-gutter git-gutter+ helm-git-grep ## point-undo rjsx-mode package-utils elscreen helm-c-moccur typescript-mode helm-descbinds helm markdown-mode projectile-rails undo-tree auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

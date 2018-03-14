@@ -39,3 +39,4 @@
 (depends-on "multi-term")
 (depends-on "smart-newline")
 (depends-on "helm-swoop")
+(depends-on "swap-buffers")
