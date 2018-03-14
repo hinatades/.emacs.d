@@ -82,10 +82,10 @@
 (setenv "LANG" "ja_JP.UTF-8")
 
 (add-hook 'term-mode-hook
-  (lambda ()
-    (define-key term-raw-map (kbd "C-t") 'other-window)
-    (define-key term-raw-map (kbd "C-n") 'term-send-down)
-    (define-key term-raw-map (kbd "C-p") 'term-send-up)))
+          (lambda ()
+            (define-key term-raw-map (kbd "C-t") 'other-window)
+            (define-key term-raw-map (kbd "C-n") 'term-send-down)
+            (define-key term-raw-map (kbd "C-p") 'term-send-up)))
 
 ;; ファイルサイズを表示
 ;;(size-indication-mode t)
@@ -98,7 +98,7 @@
 
 ;; 5.5 インデントの設定
 ;; TABの表示幅。初期値は8
-(setq-default tab-winth 4)
+(setq-default tab-winth 2)
 ;; インデントにタブ文字を使用しない
 (setq-default indent-tabs-mode nil)
 
@@ -395,7 +395,7 @@
 (add-hook 'org-mode-hook 'smart-newline-mode)
 
 (defadvice smart-newline (around C-u activate)
-;;  "C-uを押したら元のC-mの挙動をするようにした。org-modeなどで活用。"
+  ;;  "C-uを押したら元のC-mの挙動をするようにした。org-modeなどで活用。"
   (if (not current-prefix-arg)
       ad-do-it
     (let (current-prefix-arg)
