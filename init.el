@@ -55,8 +55,10 @@
 ;; install-elisp の関数を利用可能にする
 (auto-install-compatibility-setup)
 
+
 ;; multi-term
 (define-key global-map (kbd "C-x C-m") 'multi-term)
+
 
 ;; ターミナル以外はツールバー、スクロールバーを非表示
 (when window-system
@@ -356,10 +358,18 @@
 (global-set-key (kbd  "C-x C-]") 'all-indent)
 
 
+
+;; ------------------------------------------------------------------------
 ;; Helm
+;; https://github.com/emacs-helm/helm
+;; ------------------------------------------------------------------------
+
 (require 'helm)
 (require 'helm-config)
 (helm-mode 1)
+
+;; helm-buffers-list
+(define-key global-map (kbd "C-x C-b")   'helm-buffers-list)
 
 ;; helm-find-fileにキーバインド
 (define-key global-map (kbd "C-x C-f") 'helm-find-files)
@@ -381,7 +391,6 @@
 ;; Invoke `helm-git-grep' from other helm.
 (eval-after-load 'helm
   '(define-key helm-map (kbd "C-x C-g") 'helm-git-grep-from-helm))
-
 
 ;; git-gutter
 (require 'git-gutter)
