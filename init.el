@@ -59,16 +59,12 @@
 ;; multi-term
 (define-key global-map (kbd "C-x C-m") 'multi-term)
 
-
 ;; ターミナル以外はツールバー、スクロールバーを非表示
 (when window-system
   ;; tool-barを非表示
   (tool-bar-mode 0)
   ;; scroll-bar を非表示
   (scroll-bar-mode 0 ))
-
-;; C-mにnew-line-and-indentを割り当てる
-(global-set-key (kbd "C-m") 'newline-and-indent)
 
 ;; C-hを<DEL>(バックスペース)に置き換える
 (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
@@ -141,7 +137,6 @@
  ;; If there is more than one, they won't work right.
  '(hl-line ((t (:background "color-233")))))
 
-;;
 ;; Auto Complete
 
 (when (require 'auto-complete-config nil t)
@@ -166,7 +161,6 @@
 ;; 対応するカッコを強調表示
 (show-paren-mode t)
 
-
 ;; 時間も表示させる。
 (display-time)
 
@@ -176,7 +170,6 @@
 ;;(set-face-attribute 'linum nil
 ;;	    :background "#282c34"
 ;;            :height 0.9)
-
 
 ;; 現在行を目立たせる
 (global-hl-line-mode t)
@@ -391,6 +384,7 @@
 ;; Invoke `helm-git-grep' from other helm.
 (eval-after-load 'helm
   '(define-key helm-map (kbd "C-x C-g") 'helm-git-grep-from-helm))
+
 
 ;; git-gutter
 (require 'git-gutter)
