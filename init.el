@@ -386,6 +386,9 @@
   '(define-key helm-map (kbd "C-x C-g") 'helm-git-grep-from-helm))
 
 
+;; buffer
+(define-key global-map (kbd "C-x b") 'list-buffers)
+
 ;; git-gutter
 (require 'git-gutter)
 (global-git-gutter-mode t)
