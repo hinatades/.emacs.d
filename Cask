@@ -40,3 +40,5 @@
 (depends-on "smart-newline")
 (depends-on "helm-swoop")
 (depends-on "swap-buffers")
+(depends-on "magit")
+(depends-on "flycheck-pos-tip")

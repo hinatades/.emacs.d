@@ -129,7 +129,7 @@
  '(flycheck-disabled-checkers (quote (javascript-jshint javascript-jscs)))
  '(package-selected-packages
    (quote
-    (swap-buffers helm-swoop helm-gtags smart-newline git-gutter git-gutter+ helm-git-grep ## point-undo rjsx-mode package-utils elscreen helm-c-moccur typescript-mode helm-descbinds helm markdown-mode projectile-rails undo-tree auto-complete))))
+    (flycheck-pos-tip evil-magit swap-buffers helm-swoop helm-gtags smart-newline git-gutter git-gutter+ helm-git-grep ## point-undo rjsx-mode package-utils elscreen helm-c-moccur typescript-mode helm-descbinds helm markdown-mode projectile-rails undo-tree auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -262,6 +262,13 @@
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
+;; magit
+(require 'magit)
+;; 色変更
+;; (set-face-foreground 'magit-diff-add "#b9ca4a") ; 追加した部分を緑に
+;; (set-face-foreground 'magit-diff-del "#d54e53")  ; 削除した 部分を赤に
+;; (set-face-background 'magit-item-highlight "#000000") ; 選択項目ハイライトがうっとうしいので背景色と同化
+
 ;; flycheck
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -275,6 +282,11 @@
 (setq js2-mode-show-strict-warnings nil)
 (setq js2-highlight-external-variables nil)
 (setq js2-include-jslint-globals nil)
+
+;; flychek-pos-tip
+
+;; (when-eval-after-load 'flycheck
+;;                       (flycheck-pos-tip-mode))
 
 ;; rjsx-mode
 (require 'rjsx-mode)
