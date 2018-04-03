@@ -42,3 +42,4 @@
 (depends-on "swap-buffers")
 (depends-on "magit")
 (depends-on "flycheck-pos-tip")
+(depends-on "highlight-symbol")

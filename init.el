@@ -129,7 +129,7 @@
  '(flycheck-disabled-checkers (quote (javascript-jshint javascript-jscs)))
  '(package-selected-packages
    (quote
-    (flycheck-pos-tip evil-magit swap-buffers helm-swoop helm-gtags smart-newline git-gutter git-gutter+ helm-git-grep ## point-undo rjsx-mode package-utils elscreen helm-c-moccur typescript-mode helm-descbinds helm markdown-mode projectile-rails undo-tree auto-complete))))
+    (highlight-symbol flycheck-pos-tip evil-magit swap-buffers helm-swoop helm-gtags smart-newline git-gutter git-gutter+ helm-git-grep ## point-undo rjsx-mode package-utils elscreen helm-c-moccur typescript-mode helm-descbinds helm markdown-mode projectile-rails undo-tree auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -263,7 +263,7 @@
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
 ;; magit
-(require 'magit)
+(global-set-key (kbd "C-x g") 'magit-status)
 ;; 色変更
 ;; (set-face-foreground 'magit-diff-add "#b9ca4a") ; 追加した部分を緑に
 ;; (set-face-foreground 'magit-diff-del "#d54e53")  ; 削除した 部分を赤に
@@ -419,3 +419,15 @@
     (let (current-prefix-arg)
       (let (smart-newline-mode)
         (call-interactively (key-binding (kbd "C-m")))))))
+
+
+;; highlight-symbol
+
+;;; 1秒後自動ハイライトされるようになる
+(setq highlight-symbol-idle-delay 0.5)
+;;; 自動ハイライトをしたいならば
+(add-hook 'prog-mode-hook 'highlight-symbol-mode)
+;;; ソースコードにおいてM-p/M-nでシンボル間を移動
+(add-hook 'prog-mode-hook 'highlight-symbol-nav-mode)
+;;; シンボル置換
+(global-set-key (kbd "M-s M-r") 'highlight-symbol-query-replace)
