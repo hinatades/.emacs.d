@@ -1,18 +1,25 @@
-;; Emacs 23より前のバージョンを利用している方は
-;; user-emacs-directory変数が未設定のため実の設定を追加
 
+;;; init.el --- Initialization file for Emacs
+;;; Commentary: Emacs Startup File --- initialization for Emacs
+
+;;; Code:
+
+;;; Emacs 23より前のバージョンを利用している方は
+;;; user-emacs-directory変数が未設定のため以下の設定を追加
 (when (< emacs-major-version 23)
   (defvar user-emacs-directory "~/.emacsd/"))
 
-;; load-pathを追加する関数を定義
-(defun add-to-load-path (&rest pahts)
+;;; load-pathを追加する関数を定義
+(defun add-to-load-path (&rest paths)
   (let (path)
     (dolist (path paths paths)
-      (let ((default-directory
-              (expand-file-name (concat user-emacs-directory path))))
-        (add-to-list 'load-path default-directory)
-        (if (fboundp 'normal-top-level-add-to-load-path)
-            (nomarl-top-level-add-subdirs-to-load-path))))))
+     (let ((default-directory (expand-file-name (concat user-emacs-directory path))))
+       (add-to-list 'load-path default-directory)
+         (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+             (normal-top-level-add-subdirs-to-load-path))))))
+
+;;; ディレクトリをサブディレクトリごとload-pathに追加
+(add-to-load-path "elisp")
 
 (require 'package) ; package.elを有効可
 
@@ -35,7 +42,7 @@
 (add-to-list
  'package-archives
  '("melpa" . "https://melpa.org/packages/"))
-(package-initialize) ; インストール済みのElispを読み込む
+
 
 ;; ------------------------------------------------------------------------
 ;; auto-install
@@ -43,7 +50,16 @@
 ;; ------------------------------------------------------------------------
 
 ;;; auto-installの設定
+(load "~/.emacs.d/elisp/auto-install.el")
+
 (add-to-list 'load-path "~/.emacs.d/elisp/")
+(load-file "~/.emacs.d/elisp/auto-install.el")
+
+
+; インストール済みのElispを読み込む
+(package-initialize)
+
+
 (require 'auto-install)
 ;;インストールディレクトリを設定する 初期値は ~/.emacs.d/auto-install/
 (setq auto-install-directory "~/.emacs.d/elisp/")
@@ -289,7 +305,6 @@
 ;;                       (flycheck-pos-tip-mode))
 
 ;; rjsx-mode
-(require 'rjsx-mode)
 (add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
 (add-to-list 'auto-mode-alist '("containers\\/.*\\.js\\'" . rjsx-mode))
 
@@ -363,14 +378,11 @@
 (global-set-key (kbd  "C-x C-]") 'all-indent)
 
 
-
 ;; ------------------------------------------------------------------------
 ;; Helm
 ;; https://github.com/emacs-helm/helm
 ;; ------------------------------------------------------------------------
 
-(require 'helm)
-(require 'helm-config)
 (helm-mode 1)
 
 ;; helm-buffers-list
@@ -379,6 +391,7 @@
 ;; helm-find-fileにキーバインド
 (define-key global-map (kbd "C-x C-f") 'helm-find-files)
 (define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)
+
 
 ;; helm-for-fileにキーバインド
 ;;(define-key global-map (kbd "C-x C-f") 'helm-for-files)
@@ -402,23 +415,15 @@
 (define-key global-map (kbd "C-x b") 'list-buffers)
 
 ;; git-gutter
-(require 'git-gutter)
+
 (global-git-gutter-mode t)
 
 ;; smart-newline
-(require 'smart-newline)
+
 (global-set-key (kbd "C-m") 'smart-newline)
 (add-hook 'ruby-mode-hook 'smart-newline-mode)
 (add-hook 'emacs-lisp-mode-hook 'smart-newline-mode)
 (add-hook 'org-mode-hook 'smart-newline-mode)
-
-(defadvice smart-newline (around C-u activate)
-  ;;  "C-uを押したら元のC-mの挙動をするようにした。org-modeなどで活用。"
-  (if (not current-prefix-arg)
-      ad-do-it
-    (let (current-prefix-arg)
-      (let (smart-newline-mode)
-        (call-interactively (key-binding (kbd "C-m")))))))
 
 
 ;; highlight-symbol
@@ -431,3 +436,14 @@
 (add-hook 'prog-mode-hook 'highlight-symbol-nav-mode)
 ;;; シンボル置換
 (global-set-key (kbd "M-s M-r") 'highlight-symbol-query-replace)
+
+
+;; 外部ファイルが読み込まれない
+;;(load "~/.emacs.d/elisp/col-highlight.el")
+;; ;;; col-highlight.el
+(require 'col-highlight)
+;; (column-highlight-mode 1)
+
+
+(provide 'init)
+;;; init.el ends here
