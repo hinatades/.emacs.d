@@ -60,7 +60,7 @@
 (package-initialize)
 
 
-(require 'auto-install)
+;;(require 'auto-install)
 ;;インストールディレクトリを設定する 初期値は ~/.emacs.d/auto-install/
 (setq auto-install-directory "~/.emacs.d/elisp/")
 
@@ -190,6 +190,10 @@
 ;; 現在行を目立たせる
 (global-hl-line-mode t)
 
+(custom-set-faces
+'(hl-line ((t (:background "color-236"))))
+)
+
 ;; auto-complete-config の設定ファイルを読み込む。
 (require 'auto-complete-config)
 
@@ -209,7 +213,6 @@
 (global-auto-complete-mode t)
 
 ;; powerlineを設定する
-(require 'powerline)
 
 (defun powerline-my-theme ()
   "Setup the my mode-line."
@@ -286,7 +289,6 @@
 ;; (set-face-background 'magit-item-highlight "#000000") ; 選択項目ハイライトがうっとうしいので背景色と同化
 
 ;; flycheck
-(require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 (eval-after-load 'flycheck
@@ -425,7 +427,6 @@
 (add-hook 'emacs-lisp-mode-hook 'smart-newline-mode)
 (add-hook 'org-mode-hook 'smart-newline-mode)
 
-
 ;; highlight-symbol
 
 ;;; 1秒後自動ハイライトされるようになる
@@ -441,7 +442,7 @@
 ;; 外部ファイルが読み込まれない
 ;;(load "~/.emacs.d/elisp/col-highlight.el")
 ;; ;;; col-highlight.el
-(require 'col-highlight)
+;;(require 'col-highlight)
 ;; (column-highlight-mode 1)
 
 
