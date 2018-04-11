@@ -27,7 +27,6 @@
 (depends-on "powerline")
 (depends-on "atom-one-dark-theme")
 (depends-on "markdown-mode")
-(depends-on "projectile-rails")
 (depends-on "typescript-mode")
 (depends-on "helm")
 (depends-on "helm-descbinds")

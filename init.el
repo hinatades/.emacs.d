@@ -58,6 +58,10 @@
 
 ; インストール済みのElispを読み込む
 (package-initialize)
+(setq package-archives
+      '(("gnu" . "http://elpa.gnu.org/packages/")
+        ("melpa" . "http://melpa.org/packages/")
+        ("org" . "http://orgmode.org/elpa/")))
 
 
 ;;(require 'auto-install)
@@ -263,11 +267,6 @@
 
 (powerline-my-theme)
 
-;; Ruby on Rails
-(require 'projectile)
-(projectile-global-mode)
-(require 'projectile-rails)
-(add-hook 'projectile-mode-hook 'projectile-rails-on)
 
 ;; web-mode
 ;; .erb の色付け
@@ -366,10 +365,6 @@
   ;; (define-key global-map (kbd "C-'") 'undo-tree-redo)
   (global-undo-tree-mode))
 
-;; point-undo
-(require 'point-undo)
-(define-key global-map [f7] 'point-undo)
-(define-key global-map [S-f7] 'point-redo)
 
 ;; 全行一括インデント
 (defun all-indent ()
@@ -437,6 +432,8 @@
 (add-hook 'prog-mode-hook 'highlight-symbol-nav-mode)
 ;;; シンボル置換
 (global-set-key (kbd "M-s M-r") 'highlight-symbol-query-replace)
+;; 色の設定
+(setq highlight-symbol-colors '("DarkOrange" "DodgerBlue1" "DeepPink1"))
 
 
 ;; 外部ファイルが読み込まれない
@@ -444,6 +441,34 @@
 ;; ;;; col-highlight.el
 ;;(require 'col-highlight)
 ;; (column-highlight-mode 1)
+
+
+;; whitespace-mode
+(global-whitespace-mode 1)
+
+;; スペースの定義は全角スペースとする
+(setq whitespace-space-regexp "\x3000+")
+
+;; 改行の色を変更
+(set-face-foreground 'whitespace-newline "gray40")
+
+;; 半角スペースと改行を除外
+(dolist (d '((space-mark ?\ ) (newline-mark ?\n)))
+  (setq whitespace-display-mappings
+        (delete-if
+         '(lambda (e) (and (eq (car d) (car e))
+                           (eq (cadr d) (cadr e))))
+         whitespace-display-mappings)))
+
+;; 全角スペースと改行を追加
+(dolist (e '((space-mark   ?\x3000 [?\□])
+             (newline-mark ?\n     [?\u21B5 ?\n] [?$ ?\n])))
+  (add-to-list 'whitespace-display-mappings e))
+
+;; 強調したくない要素を削除
+(dolist (d '(face lines space-before-tab
+                  indentation empty space-after-tab tab-mark))
+  (setq whitespace-style (delq d whitespace-style)))
 
 
 (provide 'init)
