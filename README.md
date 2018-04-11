@@ -82,7 +82,7 @@ $ cask
 | 機能                   | Keybind     |
 |------------------------|-------------|
 | ウィンドウ切り替え     | `C-t`       |
-| 一括インデント　　　　 | `C-x C-]`   |
+| 一括インデント         | `C-x C-]`   |
 | ファイル検索           | `C-x C-f`   |
 | プロジェクト文字列検索 | `C-x C-g`   |
 | コメントアウト         | `M-;`       |
@@ -104,8 +104,9 @@ emacsのパッケージシステムは
 
 - package.el
 - auto-install.el
+- El-Get
 
-などがある。auto-install.elは割りと古いパッケージシステムなので導入方法をメモしておく。なお、本リポジトリは以下パッケージをすでに導入済みなので以下を行う必要はない。
+などがある。auto-install.elは割りと古いパッケージシステムなので導入方法をメモしておく。なお、本リポジトリは上記のパッケージをすでに導入済みなので以下を行う必要はない。
 
 ```
 $ cd ~/.emacs.d/elisp
@@ -121,7 +122,6 @@ $ wget http://www.emacswiki.org/emacs/download/auto-install.el
 ;;インストールディレクトリを設定する 初期値は ~/.emacs.d/auto-install/
 (setq auto-install-directory "~/.emacs.d/elisp/")
 ```
-とか書いておけばいい。
 
 auto-installを導入することで
 
@@ -132,7 +132,7 @@ M-x install-elisp-from-gist gist-id
 M-x auto-install-batch パッケージ名 
 ```
 
-なんかが使えるようになる。
+が使えるようになる。
 
 
 ## 参考資料

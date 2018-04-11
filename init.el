@@ -6,6 +6,13 @@
 
 ;;; Emacs 23より前のバージョンを利用している方は
 ;;; user-emacs-directory変数が未設定のため以下の設定を追加
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (when (< emacs-major-version 23)
   (defvar user-emacs-directory "~/.emacsd/"))
 
@@ -13,27 +20,41 @@
 (defun add-to-load-path (&rest paths)
   (let (path)
     (dolist (path paths paths)
-     (let ((default-directory (expand-file-name (concat user-emacs-directory path))))
-       (add-to-list 'load-path default-directory)
-         (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
-             (normal-top-level-add-subdirs-to-load-path))))))
+      (let ((default-directory (expand-file-name (concat user-emacs-directory path))))
+        (add-to-list 'load-path default-directory)
+        (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+            (normal-top-level-add-subdirs-to-load-path))))))
 
-;;; ディレクトリをサブディレクトリごとload-pathに追加
+;;; ディレクトリをload-pathに追加
 (add-to-load-path "elisp")
+
+;; 読み込んだディレクトリ内のelファイルをロード
+;;(require 'col-highlight)
+;; 常にハイライト
+;; (column-highlight-mode 1)
+;; 動作のないときにハイライト(秒数を指定)
+;;(toggle-highlight-column-when-idle 1)
+;;(col-highlight-set-interval 3)
+;; col-highlightの色を変える
+;;(custom-set-faces
+;; '(col-highlight((t (:background "color-236")))))
+;; crosshairs
+;;(require 'crosshairs)
+;;(crosshairs-mode 1)
 
 (require 'package) ; package.elを有効可
 
 ;; errorが直らない。。。
 ;; Wrong type argument: consp, nil
 
-;; Elscreenのプレフィックスキーを変更する (初期値はC-z)
-;;(setq elscreen-prefix-key (kbd "C-t"))
-;;(when (require 'elscreen nil t)
-;;(elscreen-start)
-;; C-z C-z をタイプした時にデフォルトのC-zを利用する
-;;(if window-system
+;; ;; Elscreenのプレフィックスキーを変更する (初期値はC-z)
+;; (setq elscreen-prefix-key (kbd "C-t"))
+;; (when (require 'elscreen nil t)
+;; (elscreen-start)
+;; ;;C-z C-z をタイプした時にデフォルトのC-zを利用する
+;; (if window-system
 ;;  (define-key elscreen-map (kbd "C-z") 'iconify-or-deiconify-frame)
-;;(define-key elscreen-map (kbd "C-z") 'suspend-emacs)))
+;; (define-key elscreen-map (kbd "C-z") 'suspend-emacs)))
 
 ;; パッケージリポジトリにMarmaladeとMELPAを追加
 (add-to-list
@@ -44,41 +65,45 @@
  '("melpa" . "https://melpa.org/packages/"))
 
 
+;; ;; el-get
+;; ;; load-path で ~/.emacs.d とか書かなくてよくなる
+;; (when load-file-name
+;;   (setq user-emacs-directory (file-name-directory load-file-name)))
+
+
+;; ;; el-get
+;; (add-to-list 'load-path (locate-user-emacs-file "el-get"))
+;; (require 'el-get)
+;; ;; el-getでダウンロードしたパッケージは ~/.emacs.d/ に入るようにする
+;; (setq el-get-dir (locate-user-emacs-file ""))
+
+
+
 ;; ------------------------------------------------------------------------
 ;; auto-install
 ;; http://www.emacswiki.org/emacs/download/auto-install.el
 ;; ------------------------------------------------------------------------
 
 ;;; auto-installの設定
-(load "~/.emacs.d/elisp/auto-install.el")
-
-(add-to-list 'load-path "~/.emacs.d/elisp/")
-(load-file "~/.emacs.d/elisp/auto-install.el")
-
-
-; インストール済みのElispを読み込む
-(package-initialize)
-(setq package-archives
-      '(("gnu" . "http://elpa.gnu.org/packages/")
-        ("melpa" . "http://melpa.org/packages/")
-        ("org" . "http://orgmode.org/elpa/")))
-
+;; (load "~/.emacs.d/elisp/auto-install.el")
+;; (add-to-list 'load-path "~/.emacs.d/elisp/")
+;;(load-file "~/.emacs.d/elisp/auto-install.el")
 
 ;;(require 'auto-install)
+
 ;;インストールディレクトリを設定する 初期値は ~/.emacs.d/auto-install/
-(setq auto-install-directory "~/.emacs.d/elisp/")
+;;(setq auto-install-directory "~/.emacs.d/elisp/")
 
 ;; 起動時にEmacsWikiのページ名を補完候補に加える
 ;;(auto-install-update-emacswiki-package-name t)
 ;; ediff関連のバッファを1つのフレームにまとめる
-(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+;;(setq ediff-window-setup-function 'ediff-setup-windows-plain)
 ;; install-elisp の関数を利用可能にする
-(auto-install-compatibility-setup)
+;;(auto-install-compatibility-setup)
 
 
 ;; multi-term
 (define-key global-map (kbd "C-x C-m") 'multi-term)
-
 ;; ターミナル以外はツールバー、スクロールバーを非表示
 (when window-system
   ;; tool-barを非表示
@@ -86,24 +111,27 @@
   ;; scroll-bar を非表示
   (scroll-bar-mode 0 ))
 
+
 ;; C-hを<DEL>(バックスペース)に置き換える
 (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
+
 
 ;; 折り返しトグルコマンド
 (define-key global-map (kbd "C-c l") 'toggle-truncate-lines)
 
+
 ;;C-tでウィンドウを切り替える。初期値はtranspose-chars
 (define-key global-map (kbd "C-t") 'other-window)
 
+
 ;; multi-term
-
 (setenv "LANG" "ja_JP.UTF-8")
-
 (add-hook 'term-mode-hook
           (lambda ()
             (define-key term-raw-map (kbd "C-t") 'other-window)
             (define-key term-raw-map (kbd "C-n") 'term-send-down)
             (define-key term-raw-map (kbd "C-p") 'term-send-up)))
+
 
 ;; ファイルサイズを表示
 ;;(size-indication-mode t)
@@ -114,26 +142,27 @@
 ;; バッテリー残量を表示
 (display-battery-mode t)
 
-;; 5.5 インデントの設定
+
 ;; TABの表示幅。初期値は8
-(setq-default tab-winth 2)
+(setq-default tab-winth 4)
 ;; インデントにタブ文字を使用しない
 (setq-default indent-tabs-mode nil)
+
 
 ;; Macの場合
 (require 'cask)
 ;; Linuxの場合
 ;; (require 'cask "~/.cask/cask.el")
-
 (cask-initialize)
+
 
 ;; ファイルツリーのキーバインド
 (global-set-key [f8] 'neotree-toggle)
 
+
 ;; テーマを設定する
 ;;(load-theme 'arjen-theme t)
 ;;(set-face-background 'default "#282c34")
-
 (load-theme 'arjen t t)
 (enable-theme 'arjen)
 
@@ -141,30 +170,13 @@
 ;; (custom-set-faces
 ;;   '(default ((t (:foreground "#cccccc" :slant italic)))))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(flycheck-disabled-checkers (quote (javascript-jshint javascript-jscs)))
- '(package-selected-packages
-   (quote
-    (highlight-symbol flycheck-pos-tip evil-magit swap-buffers helm-swoop helm-gtags smart-newline git-gutter git-gutter+ helm-git-grep ## point-undo rjsx-mode package-utils elscreen helm-c-moccur typescript-mode helm-descbinds helm markdown-mode projectile-rails undo-tree auto-complete))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(hl-line ((t (:background "color-233")))))
 
 ;; Auto Complete
-
 (when (require 'auto-complete-config nil t)
   (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
   (ac-config-default)
   (setq ac-use-menu-map t)
   (setq ac-ignore-case nil))
-
 (set-language-environment 'Japanese)    ; 日本語環境
 (set-default-coding-systems 'utf-8-unix)    ; UTF-8 が基本
 (set-terminal-coding-system 'utf-8-unix)    ; emacs -nw も文字化けしない
@@ -172,17 +184,20 @@
 (setq default-process-coding-system '(utf-8 . utf-8))
 (prefer-coding-system 'utf-8-unix)
 
-;; ロックファイル / バックアップファイルを作成しない
 
+;; ロックファイル / バックアップファイルを作成しない
 (setq create-lockfiles nil)
 (setq make-backup-files nil)
 (setq delete-auto-save-files t)
 
+
 ;; 対応するカッコを強調表示
 (show-paren-mode t)
 
+
 ;; 時間も表示させる。
-(display-time)
+;;(display-time)
+
 
 ;; 行番号を常に表示させる
 (global-linum-mode)
@@ -191,33 +206,34 @@
 ;;	    :background "#282c34"
 ;;            :height 0.9)
 
+
 ;; 現在行を目立たせる
 (global-hl-line-mode t)
-
 (custom-set-faces
-'(hl-line ((t (:background "color-236"))))
-)
+ '(hl-line ((t (:background "color-236"))))
+ )
 
 ;; auto-complete-config の設定ファイルを読み込む。
 (require 'auto-complete-config)
 
+
 ;; よくわからない
 (ac-config-default)
 
-;; TABの表示幅。初期値は8
-(setq-default tab-width 4)
 
 ;; TABキーで自動補完を有効にする
 (ac-set-trigger-key "TAB")
 
+
 ;; インデントにタブ文字を使用しない
 (setq-default indent-tabs-mode nil)
+
 
 ;; auto-complete-mode を起動時に有効にする
 (global-auto-complete-mode t)
 
-;; powerlineを設定する
 
+;; powerlineを設定する
 (defun powerline-my-theme ()
   "Setup the my mode-line."
   (interactive)
@@ -264,7 +280,6 @@
 (make/set-face 'mode-line-2-fg "#AAAAAA" "#2F343D" 'bold)
 (make/set-face 'mode-line-1-arrow  "#AAAAAA" "#3E4451" 'bold)
 (make/set-face 'mode-line-2-arrow  "#AAAAAA" "#3E4451" 'bold)
-
 (powerline-my-theme)
 
 
@@ -280,12 +295,14 @@
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
+
 ;; magit
 (global-set-key (kbd "C-x g") 'magit-status)
 ;; 色変更
 ;; (set-face-foreground 'magit-diff-add "#b9ca4a") ; 追加した部分を緑に
 ;; (set-face-foreground 'magit-diff-del "#d54e53")  ; 削除した 部分を赤に
 ;; (set-face-background 'magit-item-highlight "#000000") ; 選択項目ハイライトがうっとうしいので背景色と同化
+
 
 ;; flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -300,10 +317,6 @@
 (setq js2-highlight-external-variables nil)
 (setq js2-include-jslint-globals nil)
 
-;; flychek-pos-tip
-
-;; (when-eval-after-load 'flycheck
-;;                       (flycheck-pos-tip-mode))
 
 ;; rjsx-mode
 (add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
@@ -315,7 +328,6 @@
             (setq js-indent-level 2) ;;スペースは２つ、デフォルトは4
             ;; (setq js2-strict-missing-semi-warning nil) ;;行末のセミコロンの警告はオフ
             ))
-
 ;; rjsx-mode時にauto-completeを有効可
 (add-hook 'rjsx-mode-hook '(lambda ()
                              (require 'auto-complete)
@@ -325,33 +337,41 @@
 (ac-config-default)
 (add-to-list 'ac-modes 'rjsx-mode)
 
-;; rjsx-modeでflycheckを有効可
-;;(require 'flycheck)
-;;(flycheck-add-mode 'javascript-eslint 'rjsx-mode)
-;;(add-hook 'rjsx-mode-hook 'flycheck-mode)
+
+;;rjsx-modeでflycheckを有効可
+(require 'flycheck)
+(flycheck-add-mode 'javascript-eslint 'rjsx-mode)
+(add-hook 'rjsx-mode-hook 'flycheck-mode)
+
 
 ;; markdown-mode
 (autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
 (setq auto-mode-alist (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
 
+
 ;; typescript-mode
 (require 'typescript-mode)
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
+
 
 ;; htmlタグの自動補完をオン
 (setq web-mode-auto-close-style 1)
 (setq web-mode-tag-auto-close-style t)
 
+
 ;; <% %> を自動で閉じる
 (setq web-mode-enable-auto-pairing t)
+
 
 ;; カッコを自動で閉じる
 (electric-pair-mode 1)
 
+
 ;; バックアップの無効化
 (setq make-backup-files nil)
 (setq auto-save-default nil)
+
 
 ;; バックアップとオートセーブファイルを~/.emacs.d/backups/へ集める
 (add-to-list 'backup-directory-alist
@@ -379,9 +399,7 @@
 ;; Helm
 ;; https://github.com/emacs-helm/helm
 ;; ------------------------------------------------------------------------
-
 (helm-mode 1)
-
 ;; helm-buffers-list
 (define-key global-map (kbd "C-x C-b")   'helm-buffers-list)
 
@@ -411,19 +429,19 @@
 ;; buffer
 (define-key global-map (kbd "C-x b") 'list-buffers)
 
-;; git-gutter
 
+;; git-gutter
 (global-git-gutter-mode t)
 
-;; smart-newline
 
+;; smart-newline
 (global-set-key (kbd "C-m") 'smart-newline)
 (add-hook 'ruby-mode-hook 'smart-newline-mode)
 (add-hook 'emacs-lisp-mode-hook 'smart-newline-mode)
 (add-hook 'org-mode-hook 'smart-newline-mode)
 
-;; highlight-symbol
 
+;; highlight-symbol
 ;;; 1秒後自動ハイライトされるようになる
 (setq highlight-symbol-idle-delay 0.5)
 ;;; 自動ハイライトをしたいならば
@@ -436,22 +454,12 @@
 (setq highlight-symbol-colors '("DarkOrange" "DodgerBlue1" "DeepPink1"))
 
 
-;; 外部ファイルが読み込まれない
-;;(load "~/.emacs.d/elisp/col-highlight.el")
-;; ;;; col-highlight.el
-;;(require 'col-highlight)
-;; (column-highlight-mode 1)
-
-
 ;; whitespace-mode
 (global-whitespace-mode 1)
-
-;; スペースの定義は全角スペースとする
+;; スペースの定義は全角スペースとする。
 (setq whitespace-space-regexp "\x3000+")
-
 ;; 改行の色を変更
 (set-face-foreground 'whitespace-newline "gray40")
-
 ;; 半角スペースと改行を除外
 (dolist (d '((space-mark ?\ ) (newline-mark ?\n)))
   (setq whitespace-display-mappings
@@ -459,12 +467,11 @@
          '(lambda (e) (and (eq (car d) (car e))
                            (eq (cadr d) (cadr e))))
          whitespace-display-mappings)))
-
 ;; 全角スペースと改行を追加
 (dolist (e '((space-mark   ?\x3000 [?\□])
-             (newline-mark ?\n     [?\u21B5 ?\n] [?$ ?\n])))
+             ;;(newline-mark ?\n     [?\u21B5 ?\n] [?$ ?\n])
+             ))
   (add-to-list 'whitespace-display-mappings e))
-
 ;; 強調したくない要素を削除
 (dolist (d '(face lines space-before-tab
                   indentation empty space-after-tab tab-mark))
