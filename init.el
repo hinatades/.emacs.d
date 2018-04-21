@@ -13,6 +13,9 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
+;; Common Lisp
+(require 'cl)
+
 (when (< emacs-major-version 23)
   (defvar user-emacs-directory "~/.emacsd/"))
 
