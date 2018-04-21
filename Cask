@@ -17,7 +17,6 @@
 (depends-on "popwin")
 (depends-on "prodigy")
 (depends-on "projectile")
-(depends-on "s")
 (depends-on "smartparens")
 (depends-on "smex")
 (depends-on "use-package")
@@ -42,3 +41,4 @@
 (depends-on "magit")
 (depends-on "flycheck-pos-tip")
 (depends-on "highlight-symbol")
+(depends-on "rainbow-delimiters")

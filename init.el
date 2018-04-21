@@ -19,6 +19,7 @@
 (when (< emacs-major-version 23)
   (defvar user-emacs-directory "~/.emacsd/"))
 
+
 ;;; load-pathを追加する関数を定義
 (defun add-to-load-path (&rest paths)
   (let (path)
@@ -104,6 +105,12 @@
 ;; install-elisp の関数を利用可能にする
 ;;(auto-install-compatibility-setup)
 
+;; Macの場合
+(require 'cask)
+;; Linuxの場合
+;; (require 'cask "~/.cask/cask.el")
+(cask-initialize)
+
 
 ;; multi-term
 (define-key global-map (kbd "C-x C-m") 'multi-term)
@@ -152,26 +159,28 @@
 (setq-default indent-tabs-mode nil)
 
 
-;; Macの場合
-(require 'cask)
-;; Linuxの場合
-;; (require 'cask "~/.cask/cask.el")
-(cask-initialize)
-
-
-;; ファイルツリーのキーバインド
-(global-set-key [f8] 'neotree-toggle)
-
-
 ;; テーマを設定する
 ;;(load-theme 'arjen-theme t)
 ;;(set-face-background 'default "#282c34")
-(load-theme 'arjen t t)
-(enable-theme 'arjen)
+;;(load-theme 'arjen t t)
+;; (enable-theme 'arjen)
+;; atom-one-dark
+(require 'atom-one-dark-bg-black-theme)
+(load-theme 'atom-one-dark-bg-black t)
+;; 背景色を設定します。
+;;(add-to-list 'default-frame-alist '(background-color . "black"))
+;;(load-theme 'atom-one-dark t)
 
 ;; defalt font color
 ;; (custom-set-faces
 ;;   '(default ((t (:foreground "#cccccc" :slant italic)))))
+
+;; 選択中のリージョンの色
+(set-face-background 'region "#5f00d7")
+
+
+;; ファイルツリーのキーバインド
+(global-set-key [f8] 'neotree-toggle)
 
 
 ;; Auto Complete
@@ -213,7 +222,7 @@
 ;; 現在行を目立たせる
 (global-hl-line-mode t)
 (custom-set-faces
- '(hl-line ((t (:background "color-236"))))
+ '(hl-line ((t (:background "color-234"))))
  )
 
 ;; auto-complete-config の設定ファイルを読み込む。
@@ -479,6 +488,22 @@
 (dolist (d '(face lines space-before-tab
                   indentation empty space-after-tab tab-mark))
   (setq whitespace-style (delq d whitespace-style)))
+
+
+;; rainbow-delimiters を使うための設定
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
+;; 括弧の色を強調する設定
+(require 'cl-lib)
+(require 'color)
+(defun rainbow-delimiters-using-stronger-colors ()
+  (interactive)
+  (cl-loop
+   for index from 1 to rainbow-delimiters-max-face-count
+   do
+   (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
+    (cl-callf color-saturate-name (face-foreground face) 30))))
+(add-hook 'emacs-startup-hook 'rainbow-delimiters-using-stronger-colors)
 
 
 (provide 'init)
