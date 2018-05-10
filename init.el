@@ -222,8 +222,11 @@
 ;; 現在行を目立たせる
 (global-hl-line-mode t)
 (custom-set-faces
- '(hl-line ((t (:background "color-234"))))
- )
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(hl-line ((t (:background "color-234")))))
 
 ;; auto-complete-config の設定ファイルを読み込む。
 (require 'auto-complete-config)
@@ -445,7 +448,6 @@
 ;; git-gutter
 (global-git-gutter-mode t)
 
-
 ;; smart-newline
 (global-set-key (kbd "C-m") 'smart-newline)
 (add-hook 'ruby-mode-hook 'smart-newline-mode)
@@ -508,3 +510,12 @@
 
 (provide 'init)
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(flycheck-disabled-checkers (quote (javascript-jshint javascript-jscs)))
+ '(package-selected-packages
+   (quote
+    (go-mode yasnippet web-mode use-package undo-tree typescript-mode swap-buffers smex smartparens smart-newline rjsx-mode rainbow-delimiters projectile prodigy powerline popwin pallet nyan-mode neotree multiple-cursors multi-term markdown-mode magit idle-highlight-mode htmlize highlight-symbol helm-swoop helm-git-grep helm-descbinds git-gutter git-gutter+ flycheck-pos-tip flycheck-cask expand-region exec-path-from-shell drag-stuff atom-one-dark-theme))))

@@ -33,7 +33,7 @@
 (depends-on "rjsx-mode")
 (depends-on "flycheck")
 (depends-on "helm-git-grep")
-(depends-on "git-gutter")
+(depends-on "git-gutter+")
 (depends-on "multi-term")
 (depends-on "smart-newline")
 (depends-on "helm-swoop")
@@ -42,3 +42,4 @@
 (depends-on "flycheck-pos-tip")
 (depends-on "highlight-symbol")
 (depends-on "rainbow-delimiters")
+(depends-on "go-mode")
