@@ -93,7 +93,7 @@
 ;; (add-to-list 'load-path "~/.emacs.d/elisp/")
 ;;(load-file "~/.emacs.d/elisp/auto-install.el")
 
-;;(require 'auto-install)
+(require 'auto-install)
 
 ;;インストールディレクトリを設定する 初期値は ~/.emacs.d/auto-install/
 ;;(setq auto-install-directory "~/.emacs.d/elisp/")
@@ -153,8 +153,8 @@
 (display-battery-mode t)
 
 
-;; TABの表示幅。初期値は8
 (setq-default tab-winth 4)
+;; TABの表示幅。初期値は8
 ;; インデントにタブ文字を使用しない
 (setq-default indent-tabs-mode nil)
 
@@ -400,6 +400,8 @@
   ;; (define-key global-map (kbd "C-'") 'undo-tree-redo)
   (global-undo-tree-mode))
 
+
+(require 'point-undo)
 
 ;; 全行一括インデント
 (defun all-indent ()

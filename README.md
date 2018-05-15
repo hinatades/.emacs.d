@@ -2,15 +2,18 @@
 
 ## Installation
 
-### Mac
+### For Mac Users
 
-Homebrewを使ってインストールします。
+Install using Hombrew.
+
 ```
 $ brew install emacs
 ```
-公式ページ等からダウンロードせずにこの一行だけに留めると、CUIでのみemacsが使えます。
 
-インストール後、ターミナルを再起動し
+If you install emacs from Homebrew ,not downloading from Official page, you can use emacs only in CUI.
+
+After installation, restart the terminal and it is completed when it is displayed as follows.
+
 ```
 $ emacs --version
 GNU Emacs 25.2.1
@@ -21,11 +24,12 @@ under the terms of the GNU General Public License.
 For more information about these matters, see the file named COPYING.
 ```
 
-と出たら完了です。インストール先は
+The installation destination will
+
 ```
 /usr/local/Cellar/emacs/25.3/share/emacs/
 ```
-になります。
+.
 
 次にemacsのパッケージをインストールします。パッケージ管理にはcaskを使います。
 以下でパッケージをリフレッシュした後、
@@ -41,7 +45,7 @@ $ cask
 ```
 で完了です。caskコマンドでCaskに書かれたパッケージがインストールされます。
 
-### Ubuntu
+### For Ubuntu users
 
 ```
 $ git clone https://github.com/hinatades/.emacs.d
@@ -93,10 +97,14 @@ $ cask
 
 ## その他
 
+## elispファイルの追加
+
+1. elisp/以下にhogehoge.elファイルを配置
+2. init.el に(require 'hogehoge)を追記しロードする
+
 ### カラーテーマ
 
 - https://github.com/emacs-jp/replace-colorthemes
-
 
 ## emacs のパッケージシステム
 
