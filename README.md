@@ -10,7 +10,7 @@ Install using Hombrew.
 $ brew install emacs
 ```
 
-If you install emacs from Homebrew ,not downloading from Official page, you can use emacs only in CUI.
+If you install emacs from Homebrew, not downloading from Official page, you can use emacs only in CUI.
 
 After installation, restart the terminal and it is completed when it is displayed as follows.
 
@@ -24,15 +24,16 @@ under the terms of the GNU General Public License.
 For more information about these matters, see the file named COPYING.
 ```
 
-The installation destination will
+The installation destination will be in
 
 ```
 /usr/local/Cellar/emacs/25.3/share/emacs/
 ```
 .
 
-次にemacsのパッケージをインストールします。パッケージ管理にはcaskを使います。
-以下でパッケージをリフレッシュした後、
+Next install the emacs package. We use Cask for package management.
+
+Update package below.
 
 ```
 M-x package-refresh-contents
@@ -43,7 +44,8 @@ $ brew install cask
 $ cd ~/.emacs.d
 $ cask
 ```
-で完了です。caskコマンドでCaskに書かれたパッケージがインストールされます。
+
+The package written in Cask is installed by the `cask` .
 
 ### For Ubuntu users
 
@@ -92,7 +94,6 @@ $ cask
 | コメントアウト         | `M-;`       |
 | Markdown プレビュー    | `C-c C-c p` |
 | multi-term             | `C-x C-m`   |
-
 
 
 ## その他
