@@ -509,6 +509,11 @@
     (cl-callf color-saturate-name (face-foreground face) 30))))
 (add-hook 'emacs-startup-hook 'rainbow-delimiters-using-stronger-colors)
 
+;; python-mode
+(add-hook 'python-mode-hook
+          (lambda ()
+            (define-key python-mode-map (kbd "\C-m") 'newline-and-indent)
+            (define-key python-mode-map (kbd "RET") 'newline-and-indent)))
 
 (provide 'init)
 ;;; init.el ends here
