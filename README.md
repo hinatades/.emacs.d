@@ -1,5 +1,10 @@
 # My Emacs Setup
 
+
+## Screenshots
+
+![image](./images/screenshots/multi-term.png)
+
 ## Installation
 
 ### For Mac Users
@@ -83,7 +88,6 @@ $ cask
 で完了。
 
 ## Tips
-
 
 | 機能                   | Keybind     |
 |------------------------|-------------|
