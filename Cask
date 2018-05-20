@@ -43,3 +43,4 @@
 (depends-on "highlight-symbol")
 (depends-on "rainbow-delimiters")
 (depends-on "go-mode")
+(depends-on "elscreen")

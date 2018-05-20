@@ -143,18 +143,14 @@
             (define-key term-raw-map (kbd "C-p") 'term-send-up)))
 
 
-;; ファイルサイズを表示
-;;(size-indication-mode t)
-;; 時計を表示
-;; (setq display-time-day-and-date t) ; 曜日・月・日を表示
-;; (setq display-time-24hr-format t) ; 24時表示
-;; (display-time-mode t)
-;; バッテリー残量を表示
-(display-battery-mode t)
+;; elscreen
+(elscreen-start)
 
 
-(setq-default tab-winth 4)
 ;; TABの表示幅。初期値は8
+(setq-default tab-winth 4)
+
+
 ;; インデントにタブ文字を使用しない
 (setq-default indent-tabs-mode nil)
 
@@ -525,4 +521,4 @@
  '(flycheck-disabled-checkers (quote (javascript-jshint javascript-jscs)))
  '(package-selected-packages
    (quote
-    (go-mode yasnippet web-mode use-package undo-tree typescript-mode swap-buffers smex smartparens smart-newline rjsx-mode rainbow-delimiters projectile prodigy powerline popwin pallet nyan-mode neotree multiple-cursors multi-term markdown-mode magit idle-highlight-mode htmlize highlight-symbol helm-swoop helm-git-grep helm-descbinds git-gutter git-gutter+ flycheck-pos-tip flycheck-cask expand-region exec-path-from-shell drag-stuff atom-one-dark-theme))))
+    (elscreen go-mode yasnippet web-mode use-package undo-tree typescript-mode swap-buffers smex smartparens smart-newline rjsx-mode rainbow-delimiters projectile prodigy powerline popwin pallet nyan-mode neotree multiple-cursors multi-term markdown-mode magit idle-highlight-mode htmlize highlight-symbol helm-swoop helm-git-grep helm-descbinds git-gutter git-gutter+ flycheck-pos-tip flycheck-cask expand-region exec-path-from-shell drag-stuff atom-one-dark-theme))))
