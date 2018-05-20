@@ -521,4 +521,4 @@
  '(flycheck-disabled-checkers (quote (javascript-jshint javascript-jscs)))
  '(package-selected-packages
    (quote
-    (elscreen go-mode yasnippet web-mode use-package undo-tree typescript-mode swap-buffers smex smartparens smart-newline rjsx-mode rainbow-delimiters projectile prodigy powerline popwin pallet nyan-mode neotree multiple-cursors multi-term markdown-mode magit idle-highlight-mode htmlize highlight-symbol helm-swoop helm-git-grep helm-descbinds git-gutter git-gutter+ flycheck-pos-tip flycheck-cask expand-region exec-path-from-shell drag-stuff atom-one-dark-theme))))
+    (package-utils elscreen go-mode yasnippet web-mode use-package undo-tree typescript-mode swap-buffers smex smartparens smart-newline rjsx-mode rainbow-delimiters projectile prodigy powerline popwin pallet nyan-mode neotree multiple-cursors multi-term markdown-mode magit idle-highlight-mode htmlize highlight-symbol helm-swoop helm-git-grep helm-descbinds git-gutter git-gutter+ flycheck-pos-tip flycheck-cask expand-region exec-path-from-shell drag-stuff atom-one-dark-theme))))

@@ -44,3 +44,4 @@
 (depends-on "rainbow-delimiters")
 (depends-on "go-mode")
 (depends-on "elscreen")
+(depends-on "package-utils")
