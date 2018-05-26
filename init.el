@@ -48,8 +48,6 @@
 
 (require 'package) ; package.elを有効可
 
-;; errorが直らない。。。
-;; Wrong type argument: consp, nil
 
 ;; ;; Elscreenのプレフィックスキーを変更する (初期値はC-z)
 ;; (setq elscreen-prefix-key (kbd "C-t"))
@@ -136,6 +134,7 @@
 
 ;; multi-term
 (setenv "LANG" "ja_JP.UTF-8")
+(setq multi-term-program "/usr/local/bin/zsh")
 (add-hook 'term-mode-hook
           (lambda ()
             (define-key term-raw-map (kbd "C-t") 'other-window)
@@ -144,7 +143,77 @@
 
 
 ;; elscreen
-(elscreen-start)
+;; (elscreen-start)
+
+;; (tabbar-mode 1)
+;; ;; タブ上でマウスホイール操作無効
+;; (tabbar-mwheel-mode -1)
+;; ;; グループ化しない
+;; (setq tabbar-buffer-groups-function nil)
+;; ;; 画像を使わないことで軽量化する
+;; (setq tabbar-use-images nil)
+;; ;; キーに割り当てる
+;; (global-set-key (kbd "M-<right>") 'tabbar-forward-tab)
+;; (global-set-key (kbd "M-<left>") 'tabbar-backward-tab)
+
+;; (require 'tabbar)
+;; (tabbar-mode)
+
+;; (tabbar-mwheel-mode nil)                  ;; マウスホイール無効
+;; (setq tabbar-buffer-groups-function nil)  ;; グループ無効
+;; (setq tabbar-use-images nil)              ;; 画像を使わない
+
+
+;; ;;----- キーに割り当てる
+;; (global-set-key (kbd "<C-l>") 'tabbar-forward-tab)
+;; (global-set-key (kbd "<C-S-tab>") 'tabbar-backward-tab)
+
+
+;; ;;----- 左側のボタンを消す
+;; (dolist (btn '(tabbar-buffer-home-button
+;;                tabbar-scroll-left-button
+;;                tabbar-scroll-right-button))
+;;   (set btn (cons (cons "" nil)
+;;                  (cons "" nil))))
+
+
+;; ;;----- タブのセパレーターの長さ
+;; (setq tabbar-separator '(2.0))
+
+
+;; ;;----- タブの色（CUIの時。GUIの時は後でカラーテーマが適用）
+;; (set-face-attribute
+;;  'tabbar-default nil
+;;  :background "brightblue"
+;;  :foreground "white"
+;;  )
+;; (set-face-attribute
+;;  'tabbar-selected nil
+;;  :background "#ff5f00"
+;;  :foreground "brightwhite"
+;;  :box nil
+;;  )
+;; (set-face-attribute
+;;  'tabbar-modified nil
+;;  :background "brightred"
+;;  :foreground "brightwhite"
+;;  :box nil
+;;  )
+
+;; ;;----- 表示するバッファ
+;; (defun my-tabbar-buffer-list ()
+;;   (delq nil
+;;         (mapcar #'(lambda (b)
+;;                     (cond
+;;                      ;; Always include the current buffer.
+;;                      ((eq (current-buffer) b) b)
+;;                      ((buffer-file-name b) b)
+;;                      ((char-equal ?\  (aref (buffer-name b) 0)) nil)
+;;                      ((equal "*scratch*" (buffer-name b)) b) ; *scratch*バッファは表示する
+;;                      ((char-equal ?* (aref (buffer-name b) 0)) nil) ; それ以外の * で始まるバッファは表示しない
+;;                      ((buffer-live-p b) b)))
+;;                 (buffer-list))))
+;; (setq tabbar-buffer-list-function 'my-tabbar-buffer-list)
 
 
 ;; TABの表示幅。初期値は8
@@ -521,4 +590,4 @@
  '(flycheck-disabled-checkers (quote (javascript-jshint javascript-jscs)))
  '(package-selected-packages
    (quote
-    (package-utils elscreen go-mode yasnippet web-mode use-package undo-tree typescript-mode swap-buffers smex smartparens smart-newline rjsx-mode rainbow-delimiters projectile prodigy powerline popwin pallet nyan-mode neotree multiple-cursors multi-term markdown-mode magit idle-highlight-mode htmlize highlight-symbol helm-swoop helm-git-grep helm-descbinds git-gutter git-gutter+ flycheck-pos-tip flycheck-cask expand-region exec-path-from-shell drag-stuff atom-one-dark-theme))))
+    (tabbar elscreen-multi-term package-utils elscreen go-mode yasnippet web-mode use-package undo-tree typescript-mode swap-buffers smex smartparens smart-newline rjsx-mode rainbow-delimiters projectile prodigy powerline popwin pallet nyan-mode neotree multiple-cursors markdown-mode magit idle-highlight-mode htmlize highlight-symbol helm-swoop helm-git-grep helm-descbinds git-gutter git-gutter+ flycheck-pos-tip flycheck-cask expand-region exec-path-from-shell drag-stuff atom-one-dark-theme))))

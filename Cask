@@ -45,3 +45,5 @@
 (depends-on "go-mode")
 (depends-on "elscreen")
 (depends-on "package-utils")
+(depends-on "elscreen-multi-term")
+(depends-on "tabbar")
