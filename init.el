@@ -80,7 +80,6 @@
 ;; (setq el-get-dir (locate-user-emacs-file ""))
 
 
-
 ;; ------------------------------------------------------------------------
 ;; auto-install
 ;; http://www.emacswiki.org/emacs/download/auto-install.el
@@ -144,17 +143,6 @@
 
 ;; elscreen
 ;; (elscreen-start)
-
-;; (tabbar-mode 1)
-;; ;; タブ上でマウスホイール操作無効
-;; (tabbar-mwheel-mode -1)
-;; ;; グループ化しない
-;; (setq tabbar-buffer-groups-function nil)
-;; ;; 画像を使わないことで軽量化する
-;; (setq tabbar-use-images nil)
-;; ;; キーに割り当てる
-;; (global-set-key (kbd "M-<right>") 'tabbar-forward-tab)
-;; (global-set-key (kbd "M-<left>") 'tabbar-backward-tab)
 
 ;; (require 'tabbar)
 ;; (tabbar-mode)

@@ -54,38 +54,36 @@ The package written in Cask is installed by the `cask` .
 
 ### For Ubuntu users
 
+Install cask.
+
 ```
 $ git clone https://github.com/hinatades/.emacs.d
 $ curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
 ```
-でcaskコマンドをインストールし
+
+Opening path and updating shell.
 
 ```.bashrc
 PATH="$HOME/.cask/bin:$PATH"
 ```
 
-でパスを通します。その後
-
 ```
 $ source ~/.bashrc
 ```
 
-でシェルの設定を更新することでcaskコマンドが使えます。
-init.elのcaskの読み込み分を
+Rewrite the setting of cask in init.el as follows.
 
 ```
 ;; (require 'cask)
 (require 'cask "~/.cask/cask.el")
 ```
 
-と書き換え、
+Finally, do the following.
 
 ```
-$ .emacs.d
+$ cd .emacs.d
 $ cask
 ```
-
-で完了。
 
 ## Tips
 
