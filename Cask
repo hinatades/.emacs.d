@@ -47,3 +47,4 @@
 (depends-on "package-utils")
 (depends-on "elscreen-multi-term")
 (depends-on "tabbar")
+(depends-on "yaml-mode")
