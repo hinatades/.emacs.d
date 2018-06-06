@@ -48,3 +48,4 @@
 (depends-on "elscreen-multi-term")
 (depends-on "tabbar")
 (depends-on "yaml-mode")
+(depends-on "dockerfile-mode")
