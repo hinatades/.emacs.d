@@ -49,3 +49,4 @@
 (depends-on "tabbar")
 (depends-on "yaml-mode")
 (depends-on "dockerfile-mode")
+(depends-on "lua-mode")
