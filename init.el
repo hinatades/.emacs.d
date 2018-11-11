@@ -265,7 +265,7 @@
 
 
 ;; 行番号を常に表示させる
-(global-linum-mode)
+(global-display-line-numbers-mode t)
 (setq linum-format "%4d ")
 ;;(set-face-attribute 'linum nil
 ;;	    :background "#282c34"
