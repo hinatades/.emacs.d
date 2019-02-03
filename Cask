@@ -43,6 +43,8 @@
 (depends-on "highlight-symbol")
 (depends-on "rainbow-delimiters")
 (depends-on "go-mode")
+(depends-on "go-eldoc")
+(depends-on "go-autocomplete")
 (depends-on "elscreen")
 (depends-on "package-utils")
 (depends-on "elscreen-multi-term")
