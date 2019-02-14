@@ -1,5 +1,5 @@
-eshell/
-ac-comphist.dat
-.cask
-projectile-bookmarks.eld
-auto-save-list/
+.emacs.d/eshell/
+.emacs.d/ac-comphist.dat
+.emacs.d/.cask
+.emacs.d/projectile-bookmarks.eld
+.emacs.d/auto-save-list/
