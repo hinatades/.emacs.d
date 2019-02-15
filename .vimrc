@@ -29,17 +29,21 @@ set hlsearch
 " 表示設定
 "----------------------------------------
 
+" Vimの背景色をターミナルの背景色と揃える
+autocmd ColorScheme * highlight Normal ctermbg=none
+autocmd ColorScheme * highlight LineNr ctermbg=none
+
 " テーマ設定
 syntax on
 colorscheme onedark
 
 " 行を強調表示
 set cursorline
-highlight CursorLine ctermbg=Black
+highlight CursorLine ctermbg=233
 
 " 列を強調表示
 " set cursorcolumn
-" highlight CursorColumn ctermbg=Black
+" highlight CursorColumn ctermbg=233
 
 " エラーメッセージの表示時にビープを鳴らさない
 set noerrorbells
