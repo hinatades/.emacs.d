@@ -501,7 +501,7 @@
 
 
 ;; git-gutter
-(global-git-gutter-mode t)
+(global-git-gutter+-mode t)
 
 ;; smart-newline
 (global-set-key (kbd "C-m") 'smart-newline)
