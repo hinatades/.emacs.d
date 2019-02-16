@@ -45,6 +45,15 @@ highlight CursorLine ctermbg=233
 " set cursorcolumn
 " highlight CursorColumn ctermbg=233
 
+" カッコの自動補完
+" inoremap { {}<Left>
+" inoremap {<Enter> {}<Left><CR><ESC><S-o>
+" inoremap ( ()<ESC>i
+" inoremap (<Enter> ()<Left><CR><ESC><S-o>
+
+inoremap { {}<LEFT>
+inoremap ( ()<LEFT>
+
 " エラーメッセージの表示時にビープを鳴らさない
 set noerrorbells
 " Windowsでパスの区切り文字をスラッシュで扱う
@@ -72,9 +81,9 @@ hi Comment ctermfg=3
 " 入力モードでTabキー押下時に半角スペースを挿入
 set expandtab
 " インデント幅
-set shiftwidth=2
+set shiftwidth=4
 " タブキー押下時に挿入される文字幅を指定
-set softtabstop=2
+set softtabstop=4
 " ファイル内にあるタブ文字の表示幅
 set tabstop=4
 " ツールバーを非表示にする
@@ -141,3 +150,46 @@ if has("autocmd")
     \ endif
   augroup END
 endif
+
+
+" langage
+" Go
+
+let g:go_gocode_unimported_packages = 1
+
+
+" Neobundle
+
+" Note: Skip initialization for vim-tiny or vim-small.
+
+if 0 | endif
+
+if &compatible
+  set nocompatible               " Be iMproved
+endif
+
+" Required:
+set runtimepath+=~/.vim/bundle/neobundle.vim/
+
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" My Bundles here:
+" Refer to |:NeoBundle-examples|.
+" Note: You don't set neobundle setting in .gvimrc!
+
+NeoBundle 'fatih/vim-go'
+
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+
