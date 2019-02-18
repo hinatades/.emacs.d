@@ -29,6 +29,9 @@ set hlsearch
 " 表示設定
 "----------------------------------------
 
+" 行番号の色を設定
+autocmd ColorScheme * highlight LineNr ctermfg=240
+
 " Vimの背景色をターミナルの背景色と揃える
 autocmd ColorScheme * highlight Normal ctermbg=none
 autocmd ColorScheme * highlight LineNr ctermbg=none
@@ -42,8 +45,8 @@ set cursorline
 highlight CursorLine ctermbg=233
 
 " 列を強調表示
-" set cursorcolumn
-" highlight CursorColumn ctermbg=233
+set cursorcolumn
+highlight CursorColumn ctermbg=233
 
 " カッコの自動補完
 " inoremap { {}<Left>
