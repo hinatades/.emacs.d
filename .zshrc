@@ -3,15 +3,12 @@ export PATH=/usr/local/bin:$PATH
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# export LC_ALL=ja_JP.UTF-8
 export LC_CTYPE=ja_JP.UTF-8
 # export LANG=ja_JP.UTF-8
 
 export LANG=en_US.UTF-8
 
 export PATH=$HOME/.nodebrew/current/bin:$PATH
-export SLACK_TOKEN='xoxp-45204465607-87581813670-353463717971-cd6bf95a2e0380450253fec327a168a7'
-
 
 # golang
 
