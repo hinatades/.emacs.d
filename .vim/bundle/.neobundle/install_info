@@ -1,2 +1,0 @@
-3.0
-{'neobundle.vim': {'checked_time': 1550314028, 'installed_uri': 'https://github.com/Shougo/neobundle.vim.git', 'installed_path': '/Users/hinata/.vim/bundle/neobundle.vim', 'revisions': {}, 'updated_time': 1550314028}, 'vim-go': {'checked_time': 1550314269, 'installed_uri': 'https://github.com/fatih/vim-go.git', 'installed_path': '/Users/hinata/.vim/bundle/vim-go', 'revisions': {'1549865290': 'c6537a3fd3dfe26e32ea154d74b7a16c2a63b79f'}, 'updated_time': '1549865290'}}

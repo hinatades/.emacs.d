@@ -180,6 +180,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 " Let NeoBundle manage NeoBundle
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'airblade/vim-gitgutter'
 
 " My Bundles here:
 " Refer to |:NeoBundle-examples|.
