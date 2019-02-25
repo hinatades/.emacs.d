@@ -154,21 +154,18 @@ if has("autocmd")
   augroup END
 endif
 
-
 " langage
 " Go
 
 let g:go_gocode_unimported_packages = 1
 
-
 " Neobundle
-
 " Note: Skip initialization for vim-tiny or vim-small.
 
 if 0 | endif
 
 if &compatible
-  set nocompatible               " Be iMproved
+  set nocompatible  " Be iMproved
 endif
 
 " Required:
@@ -187,6 +184,7 @@ NeoBundle 'airblade/vim-gitgutter'
 " Note: You don't set neobundle setting in .gvimrc!
 
 NeoBundle 'fatih/vim-go'
+NeoBundle "Shougo/unite.vim"
 
 call neobundle#end()
 
