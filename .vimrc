@@ -49,13 +49,10 @@ set cursorcolumn
 highlight CursorColumn ctermbg=233
 
 " カッコの自動補完
-" inoremap { {}<Left>
-" inoremap {<Enter> {}<Left><CR><ESC><S-o>
-" inoremap ( ()<ESC>i
-" inoremap (<Enter> ()<Left><CR><ESC><S-o>
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap [<Enter> []<Left><CR><ESC><S-o>
+inoremap (<Enter> ()<Left><CR><ESC><S-o>
 
-inoremap { {}<LEFT>
-inoremap ( ()<LEFT>
 
 " エラーメッセージの表示時にビープを鳴らさない
 set noerrorbells
