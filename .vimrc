@@ -151,6 +151,10 @@ if has("autocmd")
   augroup END
 endif
 
+" Quickfix
+autocmd QuickFixCmdPost *grep* cwindow
+
+
 " langage
 " Go
 
