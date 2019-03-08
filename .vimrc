@@ -179,6 +179,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'airblade/vim-gitgutter'
+NeoBundle "ctrlpvim/ctrlp.vim"
 
 " My Bundles here:
 " Refer to |:NeoBundle-examples|.
