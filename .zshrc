@@ -15,6 +15,10 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 export GOPATH=$HOME/.go
 export PATH=$GOPATH/bin:$PATH
 
+export GOENV_ROOT=$HOME/.goenv
+export PATH=$GOENV_ROOT/bin:$PATH
+eval "$(goenv init -)"
+
 # export PYTHONSTARTUP=~/.pythonstartup
 # export PYTHONIOENCODING='utf-8'
 
