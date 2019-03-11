@@ -106,6 +106,8 @@ set guioptions+=a
 set guioptions-=m
 " 右スクロールバーを非表示
 set guioptions+=R
+" フォントの設定
+" set guifont=RictyDiscordForPowerline
 " 対応する括弧を強調表示
 set showmatch
 " 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
@@ -194,8 +196,24 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle "ctrlpvim/ctrlp.vim"
 
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
+
+" let g:airline_powerline_fonts = 1
+" set laststatus=2
+let g:airline_theme = 'simple'
+
+"          _                       _      _ _
+"   __   _(_)_ __ ___         __ _(_)_ __| (_)_ __   ___
+"   \ \ / / | '_ ` _ \ _____ / _` | | '__| | | '_ \ / _ \
+"    \ V /| | | | | | |_____| (_| | | |  | | | | | |  __/
+"     \_/ |_|_| |_| |_|      \__,_|_|_|  |_|_|_| |_|\___|
+
+
+NeoBundle 'ryanoasis/vim-devicons'
 NeoBundle 'scrooloose/nerdtree'
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
+NeoBundle 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " My Bundles here:
 " Refer to |:NeoBundle-examples|.
