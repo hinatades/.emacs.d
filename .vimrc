@@ -172,7 +172,8 @@ autocmd QuickFixCmdPost *grep* cwindow
 
 let g:go_gocode_unimported_packages = 1
 
-" Neobundle
+"NeoBundle Scripts-----------------------------
+
 " Note: Skip initialization for vim-tiny or vim-small.
 
 if 0 | endif
@@ -193,6 +194,9 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle "ctrlpvim/ctrlp.vim"
 
+NeoBundle 'scrooloose/nerdtree'
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
+
 " My Bundles here:
 " Refer to |:NeoBundle-examples|.
 " Note: You don't set neobundle setting in .gvimrc!
@@ -209,3 +213,4 @@ filetype plugin indent on
 " this will conveniently prompt you to install them.
 NeoBundleCheck
 
+"End NeoBundle Scripts-------------------------
