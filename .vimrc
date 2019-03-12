@@ -22,6 +22,8 @@ set backspace=indent,eol,start
 set ambiwidth=double
 " wildmenuオプションを有効(vimバーからファイルを選択できる)
 set wildmenu
+" 文字コード
+set encoding=UTF-8
 
 "----------------------------------------
 " 検索
@@ -107,7 +109,7 @@ set guioptions-=m
 " 右スクロールバーを非表示
 set guioptions+=R
 " フォントの設定
-" set guifont=RictyDiscordForPowerline
+set guifont=RictyDiscordForPowerline\ Nerd\ Font:h14
 " 対応する括弧を強調表示
 set showmatch
 " 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
@@ -221,6 +223,8 @@ NeoBundle 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 NeoBundle 'fatih/vim-go'
 NeoBundle "Shougo/unite.vim"
+
+NeoBundle "aklt/plantuml-syntax"
 
 call neobundle#end()
 
