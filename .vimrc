@@ -176,6 +176,11 @@ autocmd QuickFixCmdPost *grep* cwindow
 
 let g:go_gocode_unimported_packages = 1
 
+" Python
+
+let g:syntastic_python_checkers = ["flake8"]
+
+
 "NeoBundle Scripts-----------------------------
 
 " Note: Skip initialization for vim-tiny or vim-small.
@@ -223,6 +228,9 @@ NeoBundle 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 NeoBundle 'fatih/vim-go'
 NeoBundle "Shougo/unite.vim"
+
+" Python
+NeoBundle "scrooloose/syntastic"
 
 NeoBundle "aklt/plantuml-syntax"
 
