@@ -6,3 +6,6 @@
 .emacs.d/transient
 
 .vim/bundle
+.vimrc.bak
+
+.oh-my-zsh/
