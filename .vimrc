@@ -39,29 +39,6 @@ set incsearch
 " 検索結果をハイライト表示
 set hlsearch
 
-"----------------------------------------
-" 表示設定
-"----------------------------------------
-
-" 行番号の色を設定
-autocmd ColorScheme * highlight LineNr ctermfg=240
-
-" Vimの背景色をターミナルの背景色と揃える
-autocmd ColorScheme * highlight Normal ctermbg=none
-autocmd ColorScheme * highlight LineNr ctermbg=none
-
-" テーマ設定
-syntax on
-colorscheme onedark
-
-" 行を強調表示
-set cursorline
-highlight CursorLine ctermbg=233
-
-" 列を強調表示
-set cursorcolumn
-highlight CursorColumn ctermbg=233
-
 " カッコの自動補完
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap [<Enter> []<Left><CR><ESC><S-o>
@@ -90,8 +67,6 @@ set list
 set listchars=tab:^\ ,trail:~
 " コマンドラインの履歴を10000件保存する
 set history=10000
-" コメントの色を水色
-hi Comment ctermfg=3
 " 入力モードでTabキー押下時に半角スペースを挿入
 set expandtab
 " インデント幅
@@ -124,123 +99,141 @@ set title
 set number
 " ヤンクでクリップボードにコピー
 set clipboard=unnamed,autoselect
-" Escの2回押しでハイライト消去
-nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
 " すべての数を10進数として扱う
 set nrformats=
 " 行をまたいで移動
 set whichwrap=b,s,h,l,<,>,[,],~
 " バッファスクロール
-set mouse=a
 
-" auto reload .vimrc
-augroup source-vimrc
-  autocmd!
-  autocmd BufWritePost *vimrc source $MYVIMRC | set foldmethod=marker
-  autocmd BufWritePost *gvimrc if has('gui_running') source $MYGVIMRC
-augroup END
 
-" auto comment off
-augroup auto_comment_off
-  autocmd!
-  autocmd BufEnter * setlocal formatoptions-=r
-  autocmd BufEnter * setlocal formatoptions-=o
-augroup END
 
-" HTML/XML閉じタグ自動補完
-augroup MyXML
-  autocmd!
-  autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
-  autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
-augroup END
 
-" 編集箇所のカーソルを記憶
-if has("autocmd")
-  augroup redhat
-    " In text files, always limit the width of text to 78 characters
-    autocmd BufRead *.txt set tw=78
-    " When editing a file, always jump to the last cursor position
-    autocmd BufReadPost *
-    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-    \   exe "normal! g'\"" |
-    \ endif
-  augroup END
+"" 自動補完
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
 endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+
+" AutoComplPop like behavior.
+"let g:neocomplete#enable_auto_select = 1
+
+" Shell like behavior(not recommended).
+"set completeopt+=longest
+"let g:neocomplete#enable_auto_select = 1
+"let g:neocomplete#disable_auto_complete = 1
+"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+" For perlomni.vim setting.
+" https://github.com/c9s/perlomni.vim
+let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+
 
 " Quickfix
 autocmd QuickFixCmdPost *grep* cwindow
 
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+" `:Rg` でカレントディレクトリ以下のgrep (ripgrep)、プレビュー付き
+command! Rg
+        \ call fzf#vim#grep(
+        \   'rg --line-number --no-heading '.shellescape(<q-args>), 0,
+        \   fzf#vim#with_preview({'options': '--exact --reverse --delimiter : --nth 3..'}, 'up:50%:wrap'))
 
-" langage
-" Go
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
+" 隠しファイルをデフォルトで表示させる
+let NERDTreeShowHidden = 1
 
-let g:go_gocode_unimported_packages = 1
+" 行番号の色を設定
+autocmd ColorScheme * highlight LineNr ctermfg=240
+" Vimの背景色をターミナルの背景色と揃える
+autocmd ColorScheme * highlight Normal ctermbg=none
+autocmd ColorScheme * highlight LineNr ctermbg=none
+
+syntax on
+colorscheme onedark
+
+" 行を強調表示
+set cursorline
+highlight CursorLine ctermbg=233
+" 列を強調表示
+set cursorcolumn
+highlight CursorColumn ctermbg=233
+
+let g:lightline = {
+      \ 'colorscheme': 'one',
+      \ }
 
 " Python
-
 let g:syntastic_python_checkers = ["flake8"]
 
+" Golang
+let g:go_null_module_warning = 0
 
-"NeoBundle Scripts-----------------------------
+call plug#begin('~/.vim/plugged')
 
-" Note: Skip initialization for vim-tiny or vim-small.
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'jremmen/vim-ripgrep'
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'joshdick/onedark.vim', {'do': 'cp colors/* ~/.vim/colors/'}
+Plug 'itchyny/lightline.vim'
+Plug 'fatih/vim-go'
+Plug 'rking/ag.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'vim-syntastic/syntastic'
+Plug 'Shougo/neocomplete.vim'
 
-if 0 | endif
-
-if &compatible
-  set nocompatible  " Be iMproved
-endif
-
-" Required:
-set runtimepath+=~/.vim/bundle/neobundle.vim/
-
-" Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle "ctrlpvim/ctrlp.vim"
-
-NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
-
-" let g:airline_powerline_fonts = 1
-" set laststatus=2
-let g:airline_theme = 'simple'
-
-"          _                       _      _ _
-"   __   _(_)_ __ ___         __ _(_)_ __| (_)_ __   ___
-"   \ \ / / | '_ ` _ \ _____ / _` | | '__| | | '_ \ / _ \
-"    \ V /| | | | | | |_____| (_| | | |  | | | | | |  __/
-"     \_/ |_|_| |_| |_|      \__,_|_|_|  |_|_|_| |_|\___|
-
-
-NeoBundle 'ryanoasis/vim-devicons'
-NeoBundle 'scrooloose/nerdtree'
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
-NeoBundle 'tiagofumo/vim-nerdtree-syntax-highlight'
-
-" My Bundles here:
-" Refer to |:NeoBundle-examples|.
-" Note: You don't set neobundle setting in .gvimrc!
-
-NeoBundle 'fatih/vim-go'
-NeoBundle "Shougo/unite.vim"
-
-" Python
-NeoBundle "scrooloose/syntastic"
-
-NeoBundle "aklt/plantuml-syntax"
-
-call neobundle#end()
-
-" Required:
-filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
-
-"End NeoBundle Scripts-------------------------
+call plug#end()
