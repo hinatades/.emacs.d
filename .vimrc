@@ -184,12 +184,8 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 " Quickfix
 autocmd QuickFixCmdPost *grep* cwindow
 
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+"" let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 " `:Rg` でカレントディレクトリ以下のgrep (ripgrep)、プレビュー付き
-command! Rg
-        \ call fzf#vim#grep(
-        \   'rg --line-number --no-heading '.shellescape(<q-args>), 0,
-        \   fzf#vim#with_preview({'options': '--exact --reverse --delimiter : --nth 3..'}, 'up:50%:wrap'))
 
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 " 隠しファイルをデフォルトで表示させる
@@ -231,7 +227,6 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'joshdick/onedark.vim', {'do': 'cp colors/* ~/.vim/colors/'}
 Plug 'itchyny/lightline.vim'
 Plug 'fatih/vim-go'
-Plug 'rking/ag.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-syntastic/syntastic'
 Plug 'Shougo/neocomplete.vim'
