@@ -26,6 +26,7 @@ DOT_FILES=(
     .vimrc
     .emacs.d
     .zshrc
+    .tmux.conf
 )
 
 for file in ${DOT_FILES[@]}
