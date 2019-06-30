@@ -24,12 +24,21 @@ print_header
 DOT_FILES=(
     .vim
     .vimrc
-    .emacs.d
     .zshrc
     .tmux.conf
 )
 
 for file in ${DOT_FILES[@]}
 do
+    if [ -e $HOME/$file ]; then
+        echo "Took a backup of $HOME/$file"
+        if [ -f $HOME/$file ]; then
+            cp $HOME/$file "$HOME/$file.bak"
+            rm $HOME/$file
+        elif [ -d $HOME/$file ]; then
+            cp -r $HOME/$file "$HOME/$file.bak"
+            rm -r $HOME/$file
+        fi
+    fi
     ln -s $HOME/dotfiles/$file $HOME/$file
 done
