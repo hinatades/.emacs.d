@@ -40,5 +40,5 @@ do
         fi
         echo "Took a backup of $HOME/$file"
     fi
-    ln -s $HOME/dotfiles/$file $HOME/$file
+    ln -f -s $HOME/dotfiles/$file $HOME/$file
 done
