@@ -31,14 +31,14 @@ DOT_FILES=(
 for file in ${DOT_FILES[@]}
 do
     if [ -e $HOME/$file ]; then
-        echo "Took a backup of $HOME/$file"
         if [ -f $HOME/$file ]; then
             cp $HOME/$file "$HOME/$file.bak"
             rm $HOME/$file
         elif [ -d $HOME/$file ]; then
-            cp -r $HOME/$file "$HOME/$file.bak"
-            rm -r $HOME/$file
+            sudo cp -r $HOME/$file "$HOME/$file.bak"
+            sudo rm -r $HOME/$file
         fi
+        echo "Took a backup of $HOME/$file"
     fi
     ln -s $HOME/dotfiles/$file $HOME/$file
 done
