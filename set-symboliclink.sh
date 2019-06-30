@@ -42,3 +42,8 @@ do
     fi
     ln -f -s $HOME/dotfiles/$file $HOME/$file
 done
+
+# Install vim-plug
+# https://github.com/junegunn/vim-plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+vim +":PlugInstall" +:q +:q
