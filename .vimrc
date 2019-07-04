@@ -216,6 +216,7 @@ let g:syntastic_python_checkers = ["flake8"]
 
 " Golang
 let g:go_null_module_warning = 0
+let g:go_fmt_command = "goimports"
 
 call plug#begin('~/.vim/plugged')
 
