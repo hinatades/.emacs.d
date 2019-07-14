@@ -108,7 +108,9 @@ set whichwrap=b,s,h,l,<,>,[,],~
 
 
 
-"" 自動補完
+"" auto-completion
+"" NOTE: You need to install vim with lua to enable auto-completion
+
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 " Use neocomplete.
