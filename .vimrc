@@ -213,6 +213,9 @@ let g:lightline = {
 
 " Python
 let g:syntastic_python_checkers = ["flake8"]
+let g:autopep8_max_line_length=99
+let g:autopep8_on_save = 1
+let g:autopep8_disable_show_diff=1
 
 " Golang
 let g:go_null_module_warning = 0
@@ -231,5 +234,6 @@ Plug 'fatih/vim-go'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-syntastic/syntastic'
 Plug 'Shougo/neocomplete.vim'
+Plug 'tell-k/vim-autopep8'
 
 call plug#end()
