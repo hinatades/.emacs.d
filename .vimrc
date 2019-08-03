@@ -237,5 +237,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'vim-syntastic/syntastic'
 Plug 'Shougo/neocomplete.vim'
 Plug 'tell-k/vim-autopep8'
+Plug 'leafgarland/typescript-vim'
 
 call plug#end()
