@@ -238,5 +238,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'Shougo/neocomplete.vim'
 Plug 'tell-k/vim-autopep8'
 Plug 'leafgarland/typescript-vim'
+" PlantUML
+Plug 'aklt/plantuml-syntax'
 
 call plug#end()
