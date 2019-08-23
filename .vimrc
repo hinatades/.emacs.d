@@ -223,6 +223,12 @@ let g:autopep8_disable_show_diff=1
 let g:go_null_module_warning = 0
 let g:go_fmt_command = "goimports"
 
+"Protobuf
+let g:clang_format#auto_format=1
+let g:clang_format#style_options = {
+            \ "AlignConsecutiveAssignments": "true",
+            \ "AlignTrailingComments": "true"}
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -240,5 +246,7 @@ Plug 'tell-k/vim-autopep8'
 Plug 'leafgarland/typescript-vim'
 " PlantUML
 Plug 'aklt/plantuml-syntax'
+" Protobuf
+Plug 'rhysd/vim-clang-format'
 
 call plug#end()
