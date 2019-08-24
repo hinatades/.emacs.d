@@ -20,3 +20,6 @@ In addition, install the following with [Homebrew](https://brew.sh/).
 - [fzf](https://github.com/junegunn/fzf)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [clang-format](https://formulae.brew.sh/formula/clang-format)
+- [peco](https://github.com/peco/peco)
+- [ghq](https://github.com/motemen/ghq)
+- [hub](https://github.com/github/hub)
