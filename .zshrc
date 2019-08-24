@@ -131,6 +131,7 @@ function peco-select-history() {
 zle -N peco-select-history
 bindkey '^@' peco-select-history
 
+# peco+ghq
 function peco-src () {
   local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
   if [ -n "$selected_dir" ]; then
@@ -140,7 +141,19 @@ function peco-src () {
   zle clear-screen
 }
 zle -N peco-src
-bindkey '^]' peco-src
+bindkey '^[' peco-src
+
+# peco+ghq+hub
+function peco-src-hub () {
+  local selected_dir=$(ghq list | peco --query "$LBUFFER" | cut -d "/" -f 2,3)
+  if [ -n "$selected_dir" ]; then
+    BUFFER="hub browse ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco-src-hub
+bindkey '^]' peco-src-hub
 
 
 function git(){hub "$@"}
