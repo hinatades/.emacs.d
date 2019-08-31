@@ -223,6 +223,12 @@ let g:autopep8_disable_show_diff=1
 let g:go_null_module_warning = 0
 let g:go_fmt_command = "goimports"
 
+" Markdown
+let g:previm_open_cmd = 'open -a Google\ Chrome'
+" <ctrl>-p Preview
+nnoremap <silent> <C-p> :PrevimOpen<CR>
+
+
 "Protobuf
 let g:clang_format#auto_format=1
 let g:clang_format#style_options = {
@@ -244,6 +250,12 @@ Plug 'vim-syntastic/syntastic'
 Plug 'Shougo/neocomplete.vim'
 Plug 'tell-k/vim-autopep8'
 Plug 'leafgarland/typescript-vim'
+
+" Markdown
+Plug 'tpope/vim-markdown'
+Plug 'kannokanno/previm'
+Plug 'tyru/open-browser.vim'
+
 " PlantUML
 Plug 'aklt/plantuml-syntax'
 " Protobuf
