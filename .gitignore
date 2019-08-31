@@ -5,3 +5,5 @@
 !.vim/colors/.gitkeep
 .vim/plugged/
 !.vim/plugged/.gitkeep
+.ghq/
+!.ghq/.gitkeep
