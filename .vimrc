@@ -228,6 +228,8 @@ let g:previm_open_cmd = 'open -a Google\ Chrome'
 " <ctrl>-p Preview
 nnoremap <silent> <C-p> :PrevimOpen<CR>
 
+" Re:VIEW
+let g:vim_review#include_filetypes = ['python']
 
 "Protobuf
 let g:clang_format#auto_format=1
@@ -255,6 +257,9 @@ Plug 'leafgarland/typescript-vim'
 Plug 'tpope/vim-markdown'
 Plug 'kannokanno/previm'
 Plug 'tyru/open-browser.vim'
+
+" Re:VIEW
+Plug 'tokorom/vim-review'
 
 " PlantUML
 Plug 'aklt/plantuml-syntax'
