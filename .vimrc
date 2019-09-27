@@ -222,6 +222,9 @@ let g:autopep8_disable_show_diff=1
 " Golang
 let g:go_null_module_warning = 0
 let g:go_fmt_command = "goimports"
+"" Check GoLint、GoVet、GoErrCheck
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave_enabled = ['vet', 'errcheck']
 
 " Markdown
 let g:previm_open_cmd = 'open -a Google\ Chrome'
