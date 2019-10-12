@@ -12,15 +12,22 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # golang
 
-export GOPATH=$HOME/.go
-export PATH=$GOPATH/bin:$PATH
-
 export GOENV_ROOT=$HOME/.goenv
 export PATH=$GOENV_ROOT/bin:$PATH
+# GOENV_DISABLE_GOPATH=1
 eval "$(goenv init -)"
+
+# export GOPATH=$HOME/.go
+# User GOPATH(~/go/[version]) given by goenv
+export PATH=$GOPATH/bin:$PATH
 
 # export PYTHONSTARTUP=~/.pythonstartup
 # export PYTHONIOENCODING='utf-8'
+
+# Ruby
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 export PATH=LOCAL_PATH:$PATH
 
