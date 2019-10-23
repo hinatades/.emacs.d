@@ -163,6 +163,9 @@ let g:clang_format#style_options = {
             \ "AlignConsecutiveAssignments": "true",
             \ "AlignTrailingComments": "true"}
 
+" PlantUML
+let g:plantuml_executable_script="~/dotfiles/plantuml.sh"
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
