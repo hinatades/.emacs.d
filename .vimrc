@@ -149,6 +149,11 @@ let g:go_fmt_command = "goimports"
 let g:go_metalinter_autosave = 1
 let g:go_metalinter_autosave_enabled = ['vet', 'errcheck']
 
+" Terraform
+let g:terraform_align=1
+let g:terraform_fold_sections=1
+let g:terraform_fmt_on_save=1
+
 " Markdown
 let g:previm_open_cmd = 'open -a Google\ Chrome'
 " <ctrl>-p Preview
@@ -180,6 +185,9 @@ Plug 'airblade/vim-gitgutter'
 Plug 'vim-syntastic/syntastic'
 Plug 'tell-k/vim-autopep8'
 Plug 'leafgarland/typescript-vim'
+
+" Terraform
+Plug 'hashivim/vim-terraform'
 
 " Markdown
 Plug 'tpope/vim-markdown'
