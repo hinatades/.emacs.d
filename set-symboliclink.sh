@@ -40,7 +40,7 @@ do
         fi
         echo "Took a backup of $HOME/$file"
     fi
-    ln -f -s $HOME/dotfiles/$file $HOME/$file
+    ln -f -s $HOME/.ghq/github.com/hinatades/dotfiles/$file $HOME/$file
 done
 
 # Install vim-plug
