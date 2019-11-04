@@ -17,7 +17,7 @@ $ ./set-symboliclink.sh
 In addition, install the following with [Homebrew](https://brew.sh/).
 
 ```
-$ brew install zsh zsh-completion vim tmux install the_silver_searcher fzf  ripgrep clang-format peco ghq hub
+$ brew install zsh zsh-completion vim tmux reattach-to-user-namespace the_silver_searcher fzf ripgrep clang-format peco ghq hub
 ```
 
 ### Install zsh themes
