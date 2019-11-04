@@ -30,5 +30,5 @@ In addition, install the following with [Homebrew](https://brew.sh/).
 
 
 ```
-$ brew zsh zsh-completion vim tmux install the_silver_searcher fzf  ripgrep clang-format peco ghq hub
+$ brew install zsh zsh-completion vim tmux install the_silver_searcher fzf  ripgrep clang-format peco ghq hub
 ```
