@@ -213,6 +213,8 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'natebosch/vim-lsc'
+Plug 'mattn/vim-lsp-settings'
+Plug 'mattn/vim-goimports'
 
 " Terraform
 Plug 'hashivim/vim-terraform'
