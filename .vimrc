@@ -196,6 +196,13 @@ let g:plantuml_executable_script="~/dotfiles/plantuml.sh"
 " Remove file names form the search results
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
+" coc.nvim
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -212,13 +219,15 @@ Plug 'tell-k/vim-autopep8'
 Plug 'leafgarland/typescript-vim'
 
 " vim-lsp
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'natebosch/vim-lsc'
-Plug 'mattn/vim-lsp-settings'
+" Plug 'prabirshrestha/async.vim'
+" Plug 'prabirshrestha/vim-lsp'
+" Plug 'prabirshrestha/asyncomplete.vim'
+" Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" Plug 'natebosch/vim-lsc'
+" Plug 'mattn/vim-lsp-settings'
 Plug 'mattn/vim-goimports'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Terraform
 Plug 'hashivim/vim-terraform'
