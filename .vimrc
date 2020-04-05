@@ -192,6 +192,10 @@ let g:clang_format#style_options = {
 " PlantUML
 let g:plantuml_executable_script="~/dotfiles/plantuml.sh"
 
+" Ag
+" Remove file names form the search results
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
