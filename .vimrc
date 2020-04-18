@@ -135,37 +135,12 @@ let g:lightline = {
       \ 'colorscheme': 'one',
       \ }
 
-" Python
-let g:syntastic_python_checkers = ["flake8"]
-let g:autopep8_max_line_length=99
-
-let g:autopep8_on_save = 1
-let g:autopep8_disable_show_diff=1
-
 " Golang
 let g:go_null_module_warning = 0
 let g:go_fmt_command = "goimports"
 "" Check GoLint、GoVet、GoErrCheck
 let g:go_metalinter_autosave = 1
 let g:go_metalinter_autosave_enabled = ['vet', 'errcheck']
-
-if executable('gopls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'gopls',
-        \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
-        \ 'whitelist': ['go'],
-        \ })
-    autocmd BufWritePre *.go LspDocumentFormatSync
-endif
-
-if executable('go-langserver')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'go-langserver',
-        \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
-        \ 'whitelist': ['go'],
-        \ })
-    autocmd BufWritePre *.go LspDocumentFormatSync
-endif
 
 let g:lsp_async_completion = 1
 let g:asyncomplete_auto_popup = 1
@@ -184,7 +159,7 @@ nnoremap <silent> <C-p> :PrevimOpen<CR>
 let g:vim_review#include_filetypes = ['python']
 
 "Protobuf
-let g:clang_format#auto_format=1
+" let g:clang_format#auto_format=1
 let g:clang_format#style_options = {
             \ "AlignConsecutiveAssignments": "true",
             \ "AlignTrailingComments": "true"}
@@ -203,6 +178,10 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+"What is autocmd?
+autocmd BufNewFile,BufRead *.tsx let b:tsx_ext_found = 1
+autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -215,16 +194,11 @@ Plug 'itchyny/lightline.vim'
 Plug 'fatih/vim-go'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-syntastic/syntastic'
-Plug 'tell-k/vim-autopep8'
-Plug 'leafgarland/typescript-vim'
 
-" vim-lsp
-" Plug 'prabirshrestha/async.vim'
-" Plug 'prabirshrestha/vim-lsp'
-" Plug 'prabirshrestha/asyncomplete.vim'
-" Plug 'prabirshrestha/asyncomplete-lsp.vim'
-" Plug 'natebosch/vim-lsc'
-" Plug 'mattn/vim-lsp-settings'
+" Typescript, tsx, React
+Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
+
 Plug 'mattn/vim-goimports'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -242,7 +216,5 @@ Plug 'tokorom/vim-review'
 
 " PlantUML
 Plug 'aklt/plantuml-syntax'
-" Protobuf
-Plug 'rhysd/vim-clang-format'
 
 call plug#end()
