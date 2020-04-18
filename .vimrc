@@ -177,6 +177,8 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+" coc-explorer
+nmap <space>d :CocCommand explorer <CR>
 
 "What is autocmd?
 autocmd BufNewFile,BufRead *.tsx let b:tsx_ext_found = 1
