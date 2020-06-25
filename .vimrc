@@ -111,6 +111,9 @@ autocmd QuickFixCmdPost *grep* cwindow
 "" let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 " `:Rg` でカレントディレクトリ以下のgrep (ripgrep)、プレビュー付き
 
+" https://github.com/junegunn/fzf.vim/issues/456
+set rtp+=~/.fzf
+
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 " 隠しファイルをデフォルトで表示させる
 let NERDTreeShowHidden = 1
