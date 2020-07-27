@@ -179,3 +179,4 @@ fvim() {
   vim $selected_files
 }
 
+export PATH="/usr/local/sbin:$PATH"
