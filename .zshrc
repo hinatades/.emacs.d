@@ -39,6 +39,8 @@ export ZSH=$HOME/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 export ZSH_THEME="simple"
 
+# Github CLI
+export GITHUB_EDITOR="vim"
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
 # cause zsh load theme from this variable instead of
