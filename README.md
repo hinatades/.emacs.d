@@ -27,3 +27,20 @@ $ ./set-symboliclink.sh
 ```sh
 $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
+
+## Version managers
+
+- Golang
+  - goenv
+- Python
+  - pyenv
+- Node.js
+  - nodebrew
+- Ruby
+  - rbenv
+- Terraform
+  - tfenv
+  
+ ```
+ $ brew install goenv pyenv nodebrew rbenv tfenv
+ ```
