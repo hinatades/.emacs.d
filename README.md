@@ -2,6 +2,15 @@
 
 My OS X Dotfiles.
 
+# Version manager
+
+- Golang
+  - goenv
+- Python
+  - pyenv
+- Node.js
+  - nodebrew
+
 ## Installation
 
 First of all, install the following with [Homebrew](https://brew.sh/).
