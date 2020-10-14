@@ -22,12 +22,6 @@ $ ghq get https://github.com/hinatades/dotfiles.git
 $ ./set-symboliclink.sh
 ```
 
-### Install zsh themes
-
-```sh
-$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-```
-
 ## Version managers
 
 - Golang
