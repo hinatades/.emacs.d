@@ -124,6 +124,22 @@ autocmd ColorScheme * highlight LineNr ctermfg=240
 autocmd ColorScheme * highlight Normal ctermbg=none
 autocmd ColorScheme * highlight LineNr ctermbg=none
 
+" Cursor
+"SI = INSERT mode
+"SR = REPLACE mode
+"EI = NORMAL mode (ELSE)
+
+" Other options (replace the number after \e[):
+" Ps = 0  -> blinking block.
+" Ps = 1  -> blinking block (default).
+" Ps = 2  -> steady block.
+" Ps = 3  -> blinking underline.
+" Ps = 4  -> steady underline.
+" Ps = 5  -> blinking bar (xterm).
+" Ps = 6  -> steady bar (xterm).
+let &t_SI = "\e[5 q"
+let &t_EI = "\e[3 q"
+
 syntax on
 colorscheme onedark
 
