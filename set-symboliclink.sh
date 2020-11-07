@@ -43,6 +43,26 @@ do
     ln -f -s $HOME/ghq/github.com/hinatades/dotfiles/$file $HOME/$file
 done
 
+SECRET_DOT_FILES=(
+    .gitconfig
+    .aws
+    .ssh
+)
+
+for file in ${SECRET_DOT_FILES[@]}
+do
+    if [ -e $HOME/$file ]; then
+        if [ -f $HOME/$file ]; then
+            cp $HOME/$file "$HOME/$file.bak"
+            rm $HOME/$file
+        elif [ -d $HOME/$file ]; then
+            sudo cp -r $HOME/$file "$HOME/$file.bak"
+            sudo rm -r $HOME/$file
+        fi
+        echo "Took a backup of $HOME/$file"
+    fi
+    ln -f -s $HOME/Dropbox/$file $HOME/$file
+done
 # Install zsh themes
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 # Install zsh autosuggestion with oh-my-zsh
