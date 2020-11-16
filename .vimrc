@@ -137,8 +137,8 @@ autocmd ColorScheme * highlight LineNr ctermbg=none
 " Ps = 4  -> steady underline.
 " Ps = 5  -> blinking bar (xterm).
 " Ps = 6  -> steady bar (xterm).
-let &t_SI = "\e[5 q"
-let &t_EI = "\e[3 q"
+" let &t_SI = "\e[5 q"
+" let &t_EI = "\e[3 q"
 
 syntax on
 colorscheme onedark
@@ -178,7 +178,7 @@ nnoremap <silent> <C-p> :PrevimOpen<CR>
 let g:vim_review#include_filetypes = ['python']
 
 "Protobuf
-" let g:clang_format#auto_format=1
+let g:clang_format#auto_format=1
 let g:clang_format#style_options = {
             \ "AlignConsecutiveAssignments": "true",
             \ "AlignTrailingComments": "true"}
@@ -216,6 +216,9 @@ Plug 'itchyny/lightline.vim'
 Plug 'fatih/vim-go'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-syntastic/syntastic'
+
+" C++
+Plug 'rhysd/vim-clang-format'
 
 " Typescript, tsx, React
 Plug 'leafgarland/typescript-vim'
