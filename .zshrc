@@ -131,6 +131,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias speedtest='/usr/local/bin/speedtest'
 alias e="emacs"
+alias a="./a.out"
 alias life="cd ~/Library/Mobile\ Documents/27N4MQEA55\~pro\~writer/Documents/life"
 
 function peco-select-history() {
