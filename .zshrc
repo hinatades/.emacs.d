@@ -132,6 +132,9 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 alias speedtest='/usr/local/bin/speedtest'
 alias e="emacs"
 alias a="./a.out"
+alias A="c++ A.cpp -std=c++17"
+alias B="c++ B.cpp -std=c++17"
+alias C="c++ C.cpp -std=c++17"
 alias life="cd ~/Library/Mobile\ Documents/27N4MQEA55\~pro\~writer/Documents/life"
 
 function peco-select-history() {
