@@ -216,6 +216,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'fatih/vim-go'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-syntastic/syntastic'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 " C++
 Plug 'rhysd/vim-clang-format'
