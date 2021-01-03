@@ -154,6 +154,32 @@ let g:lightline = {
       \ 'colorscheme': 'one',
       \ }
 
+" C++
+function! Atcoder()
+  return setline('.', [
+              \ '#include <cmath>',
+              \ '#include <iomanip>',
+              \ '#include <iostream>',
+              \ '#include <map>',
+              \ '#include <regex>',
+              \ '#include <set>', 
+              \ '#include <string>',
+              \ '#include <vector>',
+              \ '#define rep(i, n) for (int i = 0; i < (n); i++)',
+              \ 'using namespace std;',
+              \ 'using ll = long long;',
+              \ 'using dl = long double;',
+              \ 'using P = pair<int, int>;',
+              \ '',
+              \ 'int main() {',
+              \ '  int n;',
+              \ '  cin >> n;',
+              \ '}'
+              \ ])
+endfunction
+command Atcoder :call Atcoder()
+command! Hello echo 'Hello, world!'
+
 " Golang
 let g:go_null_module_warning = 0
 let g:go_fmt_command = "goimports"
