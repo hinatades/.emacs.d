@@ -170,6 +170,7 @@ function! Atcoder()
               \ 'using ll = long long;',
               \ 'using dl = long double;',
               \ 'using P = pair<int, int>;',
+              \ 'const int MOD = 1e9 + 7;',
               \ '',
               \ 'int main() {',
               \ '  int n;',
