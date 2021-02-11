@@ -205,7 +205,7 @@ nnoremap <silent> <C-p> :PrevimOpen<CR>
 let g:vim_review#include_filetypes = ['python']
 
 "Protobuf
-let g:clang_format#auto_format=1
+let g:clang_format#auto_format=0
 let g:clang_format#style_options = {
             \ "AlignConsecutiveAssignments": "true",
             \ "AlignTrailingComments": "true"}
