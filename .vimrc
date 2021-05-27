@@ -254,6 +254,9 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 " C++
 Plug 'rhysd/vim-clang-format'
 
+" Rust
+Plug 'rust-lang/rust.vim'
+
 " Typescript, tsx, React
 Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
