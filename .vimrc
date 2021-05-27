@@ -115,6 +115,12 @@ autocmd QuickFixCmdPost *grep* cwindow
 set rtp+=~/.fzf
 
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
+" Switch between different windows by their direction`
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+noremap <C-h> <C-w>h
+
 " 隠しファイルをデフォルトで表示させる
 let NERDTreeShowHidden = 1
 
@@ -258,6 +264,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Terraform
 Plug 'hashivim/vim-terraform'
+
+" GraphQL
+Plug 'jparise/vim-graphql'
 
 " Markdown
 Plug 'tpope/vim-markdown'
